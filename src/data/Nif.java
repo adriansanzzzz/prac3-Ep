@@ -24,7 +24,7 @@ final public class Nif {
             throw new WrongNifFormatException("La longitud del DNI no es la correcta");
 
         if (wrongNifFormat(code))
-            throw new WrongNifFormatException("El format  no es el correcto. (8 números y una letra mayuscula)");
+            throw new WrongNifFormatException("El format  no es el correcto. (8 nÃºmeros y una letra mayuscula)");
     }
 
     private boolean wrongNifFormat(String code) {

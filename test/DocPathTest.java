@@ -1,11 +1,12 @@
 import data.DocPath;
 import interfaces.DocPathTestInterface;
+import interfaces.DocPathTestInterface;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DocPathTest implements DocPathTestInterface {
+public class DocPathTest implements DocPathTestInterface{
     DocPath docPath;
 
     @BeforeEach
