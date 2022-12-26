@@ -1,4 +1,3 @@
-import data.Nif;
 import exceptions.WrongNifFormatException;
 import interfaces.NifTestInterface;
 import org.junit.jupiter.api.BeforeEach;
