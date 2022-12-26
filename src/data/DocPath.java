@@ -13,7 +13,7 @@ final public class DocPath {
     }
 
     private void checkDocPath(String docPath) {
-        if (docPath == null) throw new NullPointerException("El path del document és null");
+        if (docPath == null) throw new NullPointerException("El path del documento es null");
     }
 
     public String getDocPath() {
@@ -38,4 +38,6 @@ final public class DocPath {
         return "DocPath{" + "path documento='" + path + '\'' + '}';
     }
 }
+
+
 
