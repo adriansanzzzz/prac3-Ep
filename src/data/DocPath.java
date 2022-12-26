@@ -5,7 +5,6 @@ package data;
  * Essential data classes
  */
 final public class DocPath {
-    // Represents the route, path to a directory
     private final String path;
 
     public DocPath(String docPath) {
