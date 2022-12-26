@@ -9,7 +9,6 @@ final public class DocPath {
 
     public DocPath(String docPath) {
         checkDocPath(docPath);
-
         this.path = docPath;
     }
 
