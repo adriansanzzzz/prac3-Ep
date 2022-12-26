@@ -12,7 +12,8 @@ final public class Nif {
     private final String nif;
     public Nif (String code) throws WrongNifFormatException {
         checkNif(code);
-        this.nif = code; }
+        this.nif = code;
+    }
 
     private void checkNif(String code) throws WrongNifFormatException {
         int correctNifLength = 9;
