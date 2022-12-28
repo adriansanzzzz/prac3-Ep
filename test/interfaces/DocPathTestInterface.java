@@ -9,6 +9,7 @@ public interface DocPathTestInterface {
     @Test
     void getDocPathTest();
 
+
     @Test
     default void getNullPointerDocPathTest() {
         assertThrows(NullPointerException.class,
