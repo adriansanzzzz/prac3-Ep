@@ -41,7 +41,6 @@ public class CardPayment {
     }
 
 
-
     public String getReference() {
         return reference;
     }

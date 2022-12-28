@@ -46,9 +46,6 @@ public class Citizen {
         }
 
     }
-    public Nif getNif() {
-        return nif;
-    }
     public String getName() {
         return name;
     }
@@ -66,9 +63,10 @@ public class Citizen {
         return nif.equals(citizen.nif) && name.equals(citizen.name) && address.equals(citizen.address) && mobileNumb.equals(citizen.mobileNumb);
     }
 
-
-
-        @Override
+    public int hashCode () {
+        return nif.hashCode() + name.hashCode() + address.hashCode() + mobileNumb.hashCode();
+    }
+    @Override
     public String toString () {
         return "Citizen: " + this.name + " " + this.address + " " + this.mobileNumb;
     }

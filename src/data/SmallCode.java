@@ -39,6 +39,7 @@ public class SmallCode {
         return "SmallCode{" + "SmallCode ciudadano='" + smallCode + '\'' + '}';
     }
 
+
 }
 
 
