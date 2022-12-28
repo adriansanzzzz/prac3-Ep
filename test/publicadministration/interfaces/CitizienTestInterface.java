@@ -38,19 +38,19 @@ public interface CitizienTestInterface {
     }
     @Test
     //si el numero de telefono no tiene 9 digitos
-    default void WrongCitizenMobileNumblength() throws WrongNifFormatException {
+    default void WrongCitizenMobileNumblengthTest() throws WrongNifFormatException {
         var nif = new Nif("49255398R");
         assertThrows(WrongCitizenMobileNumblength.class, () -> new Citizen(nif, "Javier", "Calle de la paz, 1,Huesca,22001,Spain", "66666666"));
     }
 
     @Test
     //si el numero de telefono contiene letras
-    default void WrongCitizenMobileNumbFormat() throws WrongNifFormatException {
+    default void WrongCitizenMobileNumbFormatTest() throws WrongNifFormatException {
         var nif = new Nif("49255398R");
         assertThrows(WrongCitizenMobileNumbFormat.class, () -> new Citizen(nif, "Javier", "Calle de la paz, 1,Huesca,22001,Spain", "68208577A"));
     }
     @Test
-    default void WrongCitizenMobileNumbFormat2() throws WrongNifFormatException {
+    default void WrongCitizenMobileNumbFormat2Test() throws WrongNifFormatException {
         var nif = new Nif("49255398R");
         assertThrows(WrongCitizenMobileNumbFormat.class, () -> new Citizen(nif, "Javier", "Calle de la paz, 1,Huesca,22001,Spain", "481041777"));
     }
