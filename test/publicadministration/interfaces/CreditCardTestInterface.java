@@ -16,7 +16,7 @@ public interface CreditCardTestInterface {
     @Test
     void getExpirDate();
     @Test
-    default void WrongCreditCardLengthException() throws WrongSmallCodeFormatException, WrongNifFormatException {
+    default void WrongCreditCardLengthExceptionTest() throws WrongSmallCodeFormatException, WrongNifFormatException {
         var cardNumb = "333333333333";
         var expirDate=  LocalDate.of(2025, 12, 12);
         var svc = new SmallCode("123");
@@ -24,7 +24,7 @@ public interface CreditCardTestInterface {
         assertThrows(WrongCreditCardLengthException.class, () -> new CreditCard(nif, cardNumb, expirDate, svc));
     }
     @Test
-    default void WrongCreditCardExceptionFormat() throws WrongSmallCodeFormatException, WrongNifFormatException {
+    default void WrongCreditCardExceptionFormatTest() throws WrongSmallCodeFormatException, WrongNifFormatException {
         var cardNumb = "33333333333343BA";
         var expirDate=  LocalDate.of(2025, 12, 12);
         var svc = new SmallCode("123");
@@ -32,7 +32,7 @@ public interface CreditCardTestInterface {
         assertThrows(WrongCreditCardExceptionFormat.class, () -> new CreditCard(nif, cardNumb, expirDate, svc));
     }
     @Test
-    default void WrongCreditCardDataException() throws WrongSmallCodeFormatException, WrongNifFormatException {
+    default void WrongCreditCardDataExceptionTest() throws WrongSmallCodeFormatException, WrongNifFormatException {
         var cardNumb = "3333333333334321";
         var expirDate=  LocalDate.of(2012, 12, 12);
         var svc = new SmallCode("123");
@@ -40,7 +40,7 @@ public interface CreditCardTestInterface {
         assertThrows(WrongCreditCardDataException.class, () -> new CreditCard(nif, cardNumb, expirDate, svc));
     }
     @Test
-    default void Dateisnull() throws WrongSmallCodeFormatException, WrongNifFormatException {
+    default void DateIsNullTest() throws WrongSmallCodeFormatException, WrongNifFormatException {
         var cardNumb = "3333333333334321";
         var svc = new SmallCode("123");
         var nif = new Nif("49255398R");

@@ -29,6 +29,8 @@ public class CreditCardTest implements CreditCardTestInterface {
     public void getCardNumb() {
         assertEquals("3333333333334321", creditCard.getCardNumb());
     }
+
+    @Override
     @Test
     public void getExpirDate() {
         var dategood=  LocalDate.of(2025, 12, 12);

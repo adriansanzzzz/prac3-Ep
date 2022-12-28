@@ -28,10 +28,12 @@ public class CitizienTest implements CitizienTestInterface {
     public void getCitizenNameTest(){
         assertEquals("Javier", citizen.getName());
     }
+    @Override
     @Test
     public void getCitizenAddressTest() {
         assertEquals("Calle de la paz, 1,Huesca,22001,Spain", citizen.getAddress());
     }
+    @Override
     @Test
     public void getCitizenMobileTest() {
         assertEquals("666666666", citizen.getMobileNumb());
