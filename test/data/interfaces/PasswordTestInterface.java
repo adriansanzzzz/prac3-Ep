@@ -1,4 +1,4 @@
-package interfaces;
+package data.interfaces;
 
 import data.Password;
 import exceptions.WrongPasswordFormatException;

@@ -1,4 +1,4 @@
-package interfaces;
+package data.interfaces;
 
 import data.DocPath;
 import org.junit.jupiter.api.Test;

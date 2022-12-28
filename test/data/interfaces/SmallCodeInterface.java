@@ -1,4 +1,4 @@
-package interfaces;
+package data.interfaces;
 
 import data.SmallCode;
 import exceptions.WrongSmallCodeFormatException;

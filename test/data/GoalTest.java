@@ -1,6 +1,7 @@
-import data.Goal;
+package data;
+
 import exceptions.WrongGoalTypeException;
-import interfaces.GoalTestInterface;
+import data.interfaces.GoalTestInterface;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,6 @@
-import data.DocPath;
-import interfaces.DocPathTestInterface;
-import interfaces.DocPathTestInterface;
+package data;
+
+import data.interfaces.DocPathTestInterface;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 

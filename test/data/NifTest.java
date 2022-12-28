@@ -1,8 +1,10 @@
-import data.Nif;
+package data;
+
 import exceptions.WrongNifFormatException;
-import interfaces.NifTestInterface;
+import data.interfaces.NifTestInterface;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class NifTest implements NifTestInterface {

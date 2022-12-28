@@ -1,4 +1,4 @@
-package interfaces;
+package data.interfaces;
 import data.Goal;
 import exceptions.WrongGoalTypeException;
 import org.junit.jupiter.api.Test;

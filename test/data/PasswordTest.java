@@ -1,6 +1,7 @@
-import data.Password;
+package data;
+
 import exceptions.WrongPasswordFormatException;
-import interfaces.PasswordTestInterface;
+import data.interfaces.PasswordTestInterface;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

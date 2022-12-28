@@ -1,4 +1,4 @@
-package interfaces;
+package data.interfaces;
 
 import data.DigitalSignature;
 import org.junit.jupiter.api.Test;
