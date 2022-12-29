@@ -1,4 +1,4 @@
-package services;
+package services.interfaces;
 
 import data.Goal;
 import exceptions.DigitalSignatureException;
