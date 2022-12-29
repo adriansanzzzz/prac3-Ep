@@ -15,6 +15,5 @@ public interface CertificationAuthority {
     boolean sendPIN(Nif nif, Date valD) throws WrongNifFormatException, NifNotRegisteredException, AnyMobileRegisteredException, IncorrectValDateException, ConnectException;
 
     boolean checkPIN(Nif nif, SmallCode pin) throws NotValidPINException,
-
             ConnectException;
 }
