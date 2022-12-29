@@ -58,6 +58,13 @@ public class CreditCard {
         return svc;
     }
 
+    public boolean equals (Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CreditCard card = (CreditCard) o;
+        return cardNumb.equals(card.cardNumb) && expirDate.equals(card.expirDate) && svc.equals(card.svc);
+    }
+
     @Override
     public String toString () {
     return "CreditCard: " + this.nif + " " + this.cardNumb + " " + this.expirDate + " " + this.svc;
