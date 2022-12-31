@@ -27,7 +27,7 @@ public class PDFDocumentTest implements PDFDocumentTestInterface {
     @Test
     @Override
     public void getPathTest() {
-        assertEquals(defaultPath, pdf.getPath().getDocPath());
+        assertEquals(defaultPath, pdf.pdfgetPath().getDocPath());
     }
 
     @Test
@@ -41,13 +41,13 @@ public class PDFDocumentTest implements PDFDocumentTestInterface {
     public void moveDocTest() throws IOException {
         DocPath newPath = new DocPath("C:\\Users\\Usuario\\Desktop\\EP2.pdf");
         pdf.moveDoc(newPath);
-        assertEquals(newPath.getDocPath(), pdf.getPath().getDocPath());
+        assertEquals(newPath.getDocPath(), pdf.pdfgetPath().getDocPath());
 
     }
 
     @Test
     @Override
     public void openDocTest() throws IOException {
-        pdf.openDoc(pdf.getPath());
+        pdf.openDoc(pdf.pdfgetPath());
     }
 }

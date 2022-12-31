@@ -58,6 +58,7 @@ public class CreditCard {
         return svc;
     }
 
+
     public boolean equals (Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -69,5 +70,6 @@ public class CreditCard {
     public String toString () {
     return "CreditCard: " + this.nif + " " + this.cardNumb + " " + this.expirDate + " " + this.svc;
     } // converts to String
+
 
 }

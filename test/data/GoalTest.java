@@ -14,10 +14,7 @@ public class GoalTest implements GoalTestInterface {
         String name = "WORKWITHMINORS";
         String description = "aims to promote inclusive and sustainable economic growth, full and productive employment and decent work for all.";
         String priority = "3";
-        String status = "In progress";
-        String category = "Education";
-        String subcategory = "Education integration";
-        goal = new Goal(name, description, priority, status, category, subcategory);
+        goal = new Goal(name, description, priority);
 
     }
     @Test
@@ -26,15 +23,11 @@ public class GoalTest implements GoalTestInterface {
         String name = "WORKWITHMINORS";
         String description = "aims to promote inclusive and sustainable economic growth, full and productive employment and decent work for all.";
         String priority = "3";
-        String status = "In progress";
-        String category = "Education";
-        String subcategory = "Education integration";
         assertEquals(name, goal.getType());
+        var prio = Integer.parseInt("3");
         assertEquals(description, goal.getDescription());
-        assertEquals(priority, goal.getPriority());
-        assertEquals(status, goal.getStatus());
-        assertEquals(category, goal.getCategory());
-        assertEquals(subcategory, goal.getSubcategory());
+        assertEquals(prio, goal.getPriority());
+
     }
 
 }

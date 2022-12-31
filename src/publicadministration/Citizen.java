@@ -1,8 +1,11 @@
 package publicadministration;
 
 import data.Nif;
+import data.SmallCode;
 import exceptions.WrongCitizenMobileNumbFormat;
 import exceptions.WrongCitizenMobileNumblength;
+
+import java.time.LocalDate;
 
 public class Citizen {
 
@@ -10,6 +13,9 @@ public class Citizen {
     private String name;
     private String address;
     private String mobileNumb;
+    public LocalDate valdate;
+    private PDFDocument document;
+    private SmallCode pin;
 
     public Citizen(Nif nif,String name, String add, String mobile) throws WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat {
         checkCitizen(name, add, mobile);
@@ -17,6 +23,7 @@ public class Citizen {
         this.name = name;
         this.address = add;
         this.mobileNumb = mobile;
+
     }
     // the getters
 
@@ -46,15 +53,40 @@ public class Citizen {
         }
 
     }
+    public Nif getNif() {
+        return nif;
+    }
     public String getName() {
         return name;
     }
+
     public String getAddress() {
         return address;
     }
-    public String getMobileNumb() {
-        return mobileNumb;
+
+   //BOOLEAN THAT CHECKS IF THE CITIZEN HAVE A MOBILE NUMBER
+    public boolean hasMobile() {
+        return mobileNumb != null;
     }
+
+    public void setNif(Nif nif) {
+        this.nif = nif;
+    }
+
+    public void setPin(SmallCode pin) {
+        this.pin = pin;
+    }
+
+
+    public void setValidationDate(LocalDate valDates) {
+        this.valdate = valDates;
+
+    }
+
+    public LocalDate getValidationDate() {
+        return valdate;
+    }
+
 
     public boolean equals (Object o) {
         if (this == o) return true;
@@ -63,11 +95,39 @@ public class Citizen {
         return nif.equals(citizen.nif) && name.equals(citizen.name) && address.equals(citizen.address) && mobileNumb.equals(citizen.mobileNumb);
     }
 
+
+    public void setPDFDocument(PDFDocument document) {
+        this.document = document;
+    }
+
+    public PDFDocument getPDFDocument() {
+        return this.document;
+    }
+    public void setName(String nextLine) {
+        this.name = nextLine;
+    }
+    public void setAddress(String nextLine) {
+        this.address = nextLine;
+    }
+    public void setMobileNumb(String nextLine) {
+        this.mobileNumb = nextLine;
+    }
+
+
     public int hashCode () {
         return nif.hashCode() + name.hashCode() + address.hashCode() + mobileNumb.hashCode();
     }
     @Override
     public String toString () {
         return "Citizen: " + this.name + " " + this.address + " " + this.mobileNumb;
+    }
+
+
+    public String getMobileNumb() {
+        return mobileNumb;
+    }
+
+    public SmallCode getPin(Nif nif) {
+        return pin;
     }
 }

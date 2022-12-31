@@ -17,7 +17,7 @@ final public class DocPath {
     }
 
     public String getDocPath() {
-        return path;
+        return this.path;
     }
 
     @Override
@@ -38,4 +38,3 @@ final public class DocPath {
         return "DocPath{" + "path documento='" + path + '\'' + '}';
     }
 }
-

@@ -52,5 +52,13 @@ public class CrimConvictionsColl {
 
         return crimConvictionsStr.toString();
     }
+
+    //returns the number of criminal convictions
+    public int size() {
+        return crimConvictions.size();
+    }
+    public ArrayList<CrimConviction> getconv() {
+        return crimConvictions;
+    }
 }
 

@@ -1,27 +1,24 @@
 package data;
 
-import exceptions.WrongSmallCodeFormatException;
 import data.interfaces.SmallCodeInterface;
-import org.junit.Test;
+import exceptions.WrongSmallCodeFormatException;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SmallCodeTest implements SmallCodeInterface {
-    SmallCode smallCode;
+    SmallCode smC;
 
     @BeforeEach
     public void setUp() throws WrongSmallCodeFormatException {
-        String correctSmallCode = "222";
-        smallCode = new SmallCode(correctSmallCode);
+        smC = new SmallCode("124");
     }
 
     @Test
     @Override
     public void getSmallCodeTest() {
-        String correctSmallCode = "222";
-        assertEquals(correctSmallCode, smallCode.getSmallCode());
+        assertEquals("124", smC.getSmallCode());
     }
 
-
-}
+    }

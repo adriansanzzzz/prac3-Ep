@@ -3,7 +3,6 @@ package data.interfaces;
 import data.SmallCode;
 import exceptions.WrongSmallCodeFormatException;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public interface SmallCodeInterface {
@@ -13,7 +12,7 @@ public interface SmallCodeInterface {
     @Test
     default void getNullPointerSmallCodeTest() {
         assertThrows(NullPointerException.class,
-                () -> new SmallCode(null)); //si pasamos smallcode NULL,  nos da un NullPointerException
+                () -> new SmallCode(null));
     }
     @Test
     default void tooFewNumbersTest() {

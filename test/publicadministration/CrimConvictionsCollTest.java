@@ -24,7 +24,7 @@ public class CrimConvictionsCollTest implements CrimConvictionsCollTestInterface
         crimConvictionsColl.addCriminalConviction(crimConviction);
 
     }
-
+    @Override
     @Test
     public void addandgetCriminalConvictionTest() throws CrimConvictionsDateException, WrongDateFormatException {
         var dategood=  LocalDate.of(2020, 12, 12);
@@ -32,6 +32,7 @@ public class CrimConvictionsCollTest implements CrimConvictionsCollTestInterface
         var sentence = "sentence";
         var crimConviction = new CrimConviction(dategood, offense, sentence);
         assertEquals(crimConviction, crimConvictionsColl.getCriminalConviction(dategood));
+
 
     }
 

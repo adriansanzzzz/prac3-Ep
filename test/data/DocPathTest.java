@@ -1,25 +1,24 @@
 package data;
 
 import data.interfaces.DocPathTestInterface;
-import org.junit.Test;
+import exceptions.WrongSmallCodeFormatException;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DocPathTest implements DocPathTestInterface{
-    DocPath docPath;
+    DocPath dPath;
 
     @BeforeEach
-    public void setUp() {
-        String correctDocPath = "/Users/adriansanz/Desktop/Universidad/EP/test.out";
-        docPath = new DocPath(correctDocPath);
+    public void setUp() throws WrongSmallCodeFormatException {
+        dPath = new DocPath("C:\\Users\\Usuario\\Desktop\\prueba.txt");
     }
 
     @Test
     @Override
-    public void getDocPathTest() {
-        String correctDocPath = "/Users/adriansanz/Desktop/Universidad/EP/test.out";
-        assertEquals(correctDocPath, docPath.getDocPath());
+    public void getDocPathTest () {
+        assertEquals("C:\\Users\\Usuario\\Desktop\\prueba.txt", dPath.getDocPath());
     }
 
 

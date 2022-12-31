@@ -22,12 +22,19 @@ public class PDFDocument   { // Represents a PDF document
 
     }
 
-    public DocPath getPath() {
+    public DocPath pdfgetPath() {
+
         return path;
     }
 
     public File getFile() {
         return file;
+    }
+
+    //setPDFDocument
+    public void setPDFDocument(DocPath path) {
+        this.path = path;
+        this.file = new File(path.getDocPath());
     }
 
 
@@ -48,6 +55,7 @@ public class PDFDocument   { // Represents a PDF document
     public String toString() {
         return "PDFDocument: " + this.creatDate + " " + this.path;
     } // Returns a string with the document creation date and path
+
 
 }
 

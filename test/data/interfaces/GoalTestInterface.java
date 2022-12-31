@@ -13,29 +13,29 @@ public interface GoalTestInterface {
     @Test
     default void getNullPointerGoalTest() {
         assertThrows(NullPointerException.class,
-                () -> new Goal(null,null,null,null,null,null)); //si pasamos path NULL,  nos da un NullPointerException
+                () -> new Goal(null,null,null)); //si pasamos path NULL,  nos da un NullPointerException
 
     }
     @Test
     default void getEmptyGoalTest() {
         assertThrows(NullPointerException.class,
-                () -> new Goal("","","","","",""));
+                () -> new Goal("","","")); //si pasamos path vacio,  nos da un NullPointerException
 
     }
     @Test
     default void wrongtypeGoalTest(){
         assertThrows(WrongGoalTypeException.class,
-                () -> new Goal("WRONGTYPE","test","3","in progress","Education","Education integration"));
+                () -> new Goal("WRONGTYPE","test","3"));
     }
     @Test
     //wrong priority not in range
     default void wrongPriorityGoalTest(){
         assertThrows(IllegalArgumentException.class,
-                () -> new Goal("WORKWITHMINORS","test","20","in progress","Education","Education integration"));
+                () -> new Goal("WORKWITHMINORS","test","20"));
         assertThrows(IllegalArgumentException.class,
-                () -> new Goal("WORKWITHMINORS","test","0","in progress","Education","Education integration"));
+                () -> new Goal("WORKWITHMINORS","test","0"));
         assertThrows(IllegalArgumentException.class,
-                () -> new Goal("WORKWITHMINORS","test","-5","in progress","Education","Education integration"));
+                () -> new Goal("WORKWITHMINORS","test","-5"));
     }
     }
 
