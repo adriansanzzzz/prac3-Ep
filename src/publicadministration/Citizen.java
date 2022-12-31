@@ -25,6 +25,13 @@ public class Citizen {
         this.mobileNumb = mobile;
 
     }
+    public Citizen() {
+        this.nif = nif;
+        this.name = name;
+        this.address = address;
+        this.mobileNumb = mobileNumb;
+
+    }
     // the getters
 
     void checkCitizen(String name, String add, String mobile) throws WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat {

@@ -23,6 +23,13 @@ public class CriminalRecordCertf extends PDFDocument {
         this.digSign = ds;
         this.crimConvs = crimConvictionsColl;
     }
+    public CriminalRecordCertf() {
+        this.nif = null;
+        this.name = null;
+        this.goal = null;
+        this.digSign = null;
+        this.crimConvs = null;
+    }
 
     public String getName() {
         return name;
