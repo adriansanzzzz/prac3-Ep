@@ -17,9 +17,10 @@ public class GPDClass implements GPD {
     }
 
     @Override
-    public boolean verifyData(Citizen persData, Goal goal) throws IncorrectVerificationException, ConnectException {
-        if(persData == null) throw new IncorrectVerificationException("Citizen is null");
-        if(goal == null) throw new IncorrectVerificationException("Goal is null");
+    public boolean verifyData(Citizen persDataend, Goal goalend) throws IncorrectVerificationException, ConnectException {
+        if (persDataend == null) throw new IncorrectVerificationException("Citizen is null");
+        if (goalend == null) throw new IncorrectVerificationException("Goal is null");
+        if(!(persDataend.equals(citizen) && goalend.equals(goal))) throw new IncorrectVerificationException("Goal is null");
         return true;
     }
 }

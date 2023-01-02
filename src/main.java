@@ -45,8 +45,8 @@ public class main {
 
         switch (scanner.nextInt()) {
             case 1:
-                platform.selectProcedures(); //2
-                showTramites(); //2.1
+                platform.selectProcedures();
+                showTramites();
 
                 break;
             case 2:
@@ -131,7 +131,7 @@ public class main {
         System.out.println("Introduce tu NIF");
         String nif = scanner.next();
         Nif NIF = new Nif(nif);
-        System.out.println("Formulario: Introduce Valdate del Nif--");
+        System.out.println("Formulario: Introduce Valdate del Nif");
         System.out.println("Introduce el dia");
         var day = scanner.next();
         System.out.println("Introduce el mes");
@@ -139,7 +139,7 @@ public class main {
         System.out.println("Introduce el año");
         var year = scanner.next();
         LocalDate dategood = LocalDate.of(2028, 12, 12);
-        System.out.println("Formulario: Introduce el numero telfono movil ");
+        System.out.println("Introduce el numero telfono movil ");
         var mobile = scanner.next();
         platform.initialize_citz(NIF, dategood,mobile); //5
         platform.generateandsetPIN();
@@ -156,7 +156,7 @@ public class main {
         var name = scanner.next();
         System.out.println("Introduce tu add");
         var add = scanner.next();
-        System.out.println("Introduce tu tel");
+        System.out.println("Introduce tu telefono");
         //var tel = scanner.next();
         var tel="666666666";
         var citizenfinal= new Citizen(nif,name,add,tel);

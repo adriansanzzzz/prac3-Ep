@@ -19,7 +19,7 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class UnifiedPlatformTestClavePermanente {
+public class UnifiedPlatformTestClavePermanente  {
     UnifiedPlatform unifiedPlatform;
     Citizen citizen;
 

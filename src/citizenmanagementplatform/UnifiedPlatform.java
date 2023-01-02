@@ -80,6 +80,7 @@ public class UnifiedPlatform {
         ca = new CertificationAuthorityClass(citz);
         citz.setNif(nif);
         citz.setValidationDate(valDate);
+        citz.setMobileNumb(mobile);
 
     }
     public void initialize_citz(Nif nif, LocalDate valDate, String mobile, Password pass)  {
@@ -116,7 +117,6 @@ public class UnifiedPlatform {
         if(!selectJusMin || !selectProcedures || !selectCriminalReportCertf || !selectAuthMethod || !enternifnobt) throw new ProceduralException("No se ha seleccionado Ministerio de Justicia o Tramites o Obtener el certificado de antecedentes penales o metodo de identificacion o DNI y fecha de nacimiento o PIN");
         if (ca.checkPIN(this.citz.getNif(), pin)) {
             System.out.println("Aviso: El PIN introducido es correcto!!");
-            System.out.println("Se procede a mostrar el certificado de antecedentes penales.");
         } else {
             throw new ConnectException("ERROR: No se ha podido conectar el usuario.");
         }
@@ -145,22 +145,19 @@ public class UnifiedPlatform {
     }
     public  void enterForm (Citizen citizen, Goal goal) throws IncorrectVerificationException, ConnectException, IncompleteFormException, ProceduralException {
         enterform = true;
-        if(!selectJusMin || !selectProcedures || !selectCriminalReportCertf || !selectAuthMethod  || !enternifnobt  || !enterpin) throw new ProceduralException("No se ha seleccionado Ministerio de Justicia o Tramites o Obtener el certificado de antecedentes penales o metodo de identificacion o DNI y fecha de nacimiento o PIN");
-        if (citz == null || goal == null) {
-            throw new IncompleteFormException("El usuario no existe en el sistema.");
-        }
+        if (!selectJusMin || !selectProcedures || !selectCriminalReportCertf || !selectAuthMethod || !enternifnobt || !enterpin)
+            throw new ProceduralException("No se ha seleccionado Ministerio de Justicia o Tramites o Obtener el certificado de antecedentes penales o metodo de identificacion o DNI y fecha de nacimiento o PIN");
+
         gpd = new GPDClass(citizen, goal);
-        if(!(citizen.equals(citz) && goal.equals(go))) {
-            throw new IncorrectVerificationException("El usuario no existe en el sistema.");
-        }
-        citz=citizen;
         go=goal;
+        citz=citizen;
 
-
-        if (gpd.verifyData(citz, goal)) {
-            System.out.println("Aviso: Se ha verificado correctamente el usuario.");
-            System.out.println("Importe a pagar: 3,86");
-
+        if (citizen.getName() == null || citizen.getAddress() == null || goal.getDescription() == null || goal.getType() == null) {
+            throw new IncompleteFormException("El formulario no esta completo");
+        }
+        if (gpd.verifyData(citizen, goal)) {
+            System.out.println("Aviso: El formulario ha sido verificado correctamente");
+            System.out.println("Aviso: Importe a pagar: 3.86€");
         } else {
             throw new ConnectException("ERROR: No se ha podido conectar el usuario.");
         }

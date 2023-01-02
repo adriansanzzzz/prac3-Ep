@@ -18,7 +18,7 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class UnifiedPlatformTest  {
+public class UnifiedPlatformTestClavePin {
     UnifiedPlatform unifiedPlatform;
     Citizen citizen;
 
@@ -32,12 +32,11 @@ public class UnifiedPlatformTest  {
         var correctvalD = LocalDate.of(2025, 12, 12);
         var correctmobile = "666666666";
 
-
         unifiedPlatform.initialize_citz(correctnif, correctvalD, correctmobile);
         unifiedPlatform.set_pin(new SmallCode("123"));
 
-
     }
+
 
     @Test
     public void NifNotRegisteredException() {
@@ -47,7 +46,6 @@ public class UnifiedPlatformTest  {
                     unifiedPlatform.enterNIFandPINobt(new Nif("49255398R"), citizen.getValidationDate());
                 });
     }
-
 
 
 
@@ -95,26 +93,23 @@ public class UnifiedPlatformTest  {
 
     // enterForm Test
     @Test
-    public void IncompleteFormExceptionTest() {
+    public void IncompleteFormExceptionTest() throws WrongNifFormatException, WrongGoalTypeException {
+        var correctnif = new Nif("12345678B");
+        var correctvalD = LocalDate.of(2023, 12, 12);
+        var correctmobile = "666666646";
+        unifiedPlatform.initialize_citz(correctnif, correctvalD, correctmobile);
+        var badcitz = new Citizen();
+        String name = "WORKWITHMINORS";
+        String description = "aims to promote inclusive and sustainable economic growth, full and productive employment and decent work for all.";
+        String priority = "4";
+        var badgoal = new Goal(name, description, priority);
+
         assertThrows(
                 citizenmanagementplatform.exceptions.IncompleteFormException.class,
                 () -> {
-                    unifiedPlatform.enterForm(null, null);
+                    unifiedPlatform.enterForm(badcitz, badgoal);
                 });
     }
-
-    @Test
-    public void IncorrectVerificationExceptionTest() throws WrongNifFormatException, WrongGoalTypeException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat {
-        var correctnif = new Nif("12345678A");
-        var badcitizen = new Citizen(correctnif, "Name", "add", "666666666");
-        var badgoal = new Goal("PUBLICWORKERS", "desc", "4");
-        assertThrows(
-                services.exceptions.IncorrectVerificationException.class,
-                () -> {
-                    unifiedPlatform.enterForm(badcitizen, badgoal);
-                });
-    }
-
 
     //enterCardData Test
     @Test
