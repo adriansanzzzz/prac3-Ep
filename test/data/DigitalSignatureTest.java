@@ -11,8 +11,8 @@ public class DigitalSignatureTest implements DigitalSignatureTestInterface {
 
     @BeforeEach
     public void setUp() {
-        byte[] correctDigitalSignature = new byte[]{1, 2, 3, 4, 5, 6};
-        digitalSignature = new DigitalSignature(correctDigitalSignature);
+        byte[] DigitalSignature = new byte[]{1, 2, 3, 4, 5, 6};
+        digitalSignature = new DigitalSignature(DigitalSignature);
     }
 
     @Test

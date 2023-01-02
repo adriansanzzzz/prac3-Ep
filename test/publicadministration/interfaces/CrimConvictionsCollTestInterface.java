@@ -36,9 +36,7 @@ public interface CrimConvictionsCollTestInterface {
         var offense = "crimConviction";
         var sentence = "sentence";
         var crimConviction = new CrimConviction(dategood, offense, sentence);
-        //add to collection
         crimConvictionsColl.addCriminalConviction(crimConviction);
-        //add again
         assertThrows(RepeatedCrimConvictionException.class, () -> crimConvictionsColl.addCriminalConviction(crimConviction));
 
 

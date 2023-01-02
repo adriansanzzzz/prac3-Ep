@@ -182,6 +182,7 @@ public class UnifiedPlatform {
 
     public CreditCard creditcard_form() throws WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, WrongSmallCodeFormatException, WrongNifFormatException, IncompleteFormException {
         //AUXILIAR METHOD
+        System.out.println("Aviso: Introduzca los datos de su tarjeta de credito");
         System.out.println("Formulario: Introduce el Nif del titular de la tarjeta: ");
         var nif = new Nif(scanner.nextLine());
         System.out.println("Formulario: Introduce el número de la tarjeta");
@@ -196,7 +197,7 @@ public class UnifiedPlatform {
         System.out.println("Introduce el año:");
         var year = scanner.nextInt();
         var expdate = LocalDate.of(year, month, day);
-        System.out.println("Formulario: Introduce el código de seguridad");
+        System.out.println("Formulario:Introduce el código de seguridad:");
         var code = scanner.next();
         var finalcode = new data.SmallCode(code);
         if(nif==null || num==null || titular==null || expdate==null || finalcode==null){
