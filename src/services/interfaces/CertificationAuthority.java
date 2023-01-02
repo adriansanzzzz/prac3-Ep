@@ -3,7 +3,7 @@ package services.interfaces;
 import data.Nif;
 import data.Password;
 import data.SmallCode;
-import exceptions.NotValidCredException;
+import citizenmanagementplatform.exceptions.NotValidCredException;
 import exceptions.WrongNifFormatException;
 import services.exceptions.AnyMobileRegisteredException;
 import services.exceptions.IncorrectValDateException;

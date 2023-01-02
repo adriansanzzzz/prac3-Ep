@@ -14,6 +14,11 @@ public class Goal {
         this.description = description;
         this.priority = Integer.parseInt(priority);
     }
+    public Goal() {
+        this.type = "";
+        this.description = "";
+        this.priority = 0;
+    }
 
     public String getType() {
         return type;

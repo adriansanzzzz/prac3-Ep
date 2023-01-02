@@ -1,5 +1,6 @@
 package services;
 
+import citizenmanagementplatform.exceptions.IncompleteFormException;
 import publicadministration.CreditCard;
 import services.exceptions.InsufficientBalanceException;
 import services.exceptions.NotValidPaymentDataException;
@@ -23,10 +24,21 @@ public class CASClass implements CAS{
     }
 
     @Override
-    public boolean askForApproval(String nTrans, CreditCard cardData, LocalDate date, BigDecimal imp) throws NotValidPaymentDataException, InsufficientBalanceException, ConnectException {
-        if(cardData == null) throw new NotValidPaymentDataException("Credit card is null");
-        if(imp == null) throw new NotValidPaymentDataException("Amount is null");
-        if(imp.compareTo(BigDecimal.ZERO) < 0) throw new NotValidPaymentDataException("Amount is negative");
+    public boolean askForApproval(String nTrans, CreditCard cardD, LocalDate date, BigDecimal imp) throws NotValidPaymentDataException, InsufficientBalanceException, ConnectException, IncompleteFormException {
+
+        if (!cardData.getCardNumb().equals(cardD.getCardNumb())) throw new NotValidPaymentDataException("Credit card number is not valid");
+        if (!cardD.getNif().equals(cardData.getNif())) throw new NotValidPaymentDataException("NIF card is not valid");
+        if (!cardD.getExpirDate().equals(cardData.getExpirDate())) throw new NotValidPaymentDataException("EXPDAT card is not valid");
+        if (!cardD.getSvc().equals(cardData.getSvc())) throw new NotValidPaymentDataException("SVC card is not valid");
+        if (imp.compareTo(BigDecimal.ZERO) < 0) throw new NotValidPaymentDataException("Amount is negative");
+
         return true;
+    }
+
+    public void setCardData(CreditCard cardData) {
+        this.cardData = cardData;
+    }
+    public void getCardData(LocalDate date) {
+        this.date = date;
     }
 }

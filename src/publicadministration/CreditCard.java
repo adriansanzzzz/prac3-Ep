@@ -6,14 +6,16 @@ import exceptions.WrongCreditCardDataException;
 import exceptions.WrongCreditCardExceptionFormat;
 import exceptions.WrongCreditCardLengthException;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class CreditCard {
     // The payment information for using the card via internet
-    private final Nif nif; // The nif of the user
-    private final String cardNumb; // The number of the credit card
-    private final LocalDate expirDate; // The expiration date for the credit card
-    private final SmallCode svc; // The Safe Verification Code
+    private Nif nif; // The nif of the user
+    private String cardNumb; // The number of the credit card
+    private LocalDate expirDate; // The expiration date for the credit card
+    private SmallCode svc; // The Safe Verification Code
+    private BigDecimal balance;
 
     public CreditCard (Nif nif, String cNum, LocalDate d, SmallCode c) throws WrongCreditCardLengthException, WrongCreditCardExceptionFormat, WrongCreditCardDataException {
         checkCreditCard(cNum, d, c);
@@ -21,6 +23,14 @@ public class CreditCard {
         this.cardNumb = cNum;
         this.expirDate = d;
         this.svc = c;
+        this.balance = new BigDecimal(1000);
+    }
+    public CreditCard() {
+        this.nif = null;
+        this.cardNumb = null;
+        this.expirDate = null;
+        this.svc = null;
+        this.balance = new BigDecimal(1000);
     }
 
     void checkCreditCard(String cNum, LocalDate d, SmallCode c) throws  WrongCreditCardExceptionFormat, WrongCreditCardLengthException, WrongCreditCardDataException {
@@ -32,6 +42,9 @@ public class CreditCard {
         }
         if(d==null){
             throw new NullPointerException(" expiration date es null");
+        }
+        if(c==null){
+            throw new NullPointerException("Svc es null");
         }
         //if cnum is not a number
         if (!cNum.matches("[0-9]+")) {
@@ -57,19 +70,44 @@ public class CreditCard {
     public SmallCode getSvc() {
         return svc;
     }
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public void setBalance(BigDecimal Balance) {
+        this.balance = Balance;
+    }
+    public void setNif(Nif nif) {
+        this.nif = nif;
+    }
+    public void setCardNumb(String cardNumb) {
+        this.cardNumb = cardNumb;
+    }
+    public void setExpirDate(LocalDate expirdate) {
+        this.expirDate = expirdate;
+    }
+    public void setSvc(SmallCode svc) {
+        this.svc = svc;
+    }
 
 
+    @Override
     public boolean equals (Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CreditCard card = (CreditCard) o;
-        return cardNumb.equals(card.cardNumb) && expirDate.equals(card.expirDate) && svc.equals(card.svc);
+        CreditCard that = (CreditCard) o;
+        return nif.equals(that.nif) &&
+                cardNumb.equals(that.cardNumb) &&
+                expirDate.equals(that.expirDate) &&
+                svc.equals(that.svc);
+
     }
 
     @Override
     public String toString () {
     return "CreditCard: " + this.nif + " " + this.cardNumb + " " + this.expirDate + " " + this.svc;
     } // converts to String
+
 
 
 }

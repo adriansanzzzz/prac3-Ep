@@ -14,8 +14,8 @@ public class Citizen {
     private String address;
     private String mobileNumb;
     public LocalDate valdate;
-    private PDFDocument document;
     private SmallCode pin;
+    private PDFDocument pdf;
 
     public Citizen(Nif nif,String name, String add, String mobile) throws WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat {
         checkCitizen(name, add, mobile);
@@ -23,6 +23,8 @@ public class Citizen {
         this.name = name;
         this.address = add;
         this.mobileNumb = mobile;
+        this.pdf=null;
+        this.pin=pin;
 
     }
     public Citizen() {
@@ -90,26 +92,23 @@ public class Citizen {
 
     }
 
+
     public LocalDate getValidationDate() {
         return valdate;
     }
 
-
+    @Override
     public boolean equals (Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Citizen citizen = (Citizen) o;
-        return nif.equals(citizen.nif) && name.equals(citizen.name) && address.equals(citizen.address) && mobileNumb.equals(citizen.mobileNumb);
-    }
+        return nif.equals(citizen.nif) &&
+                name.equals(citizen.name) &&
+                address.equals(citizen.address) &&
+                mobileNumb.equals(citizen.mobileNumb);}
 
 
-    public void setPDFDocument(PDFDocument document) {
-        this.document = document;
-    }
 
-    public PDFDocument getPDFDocument() {
-        return this.document;
-    }
     public void setName(String nextLine) {
         this.name = nextLine;
     }
@@ -136,5 +135,13 @@ public class Citizen {
 
     public SmallCode getPin(Nif nif) {
         return pin;
+    }
+
+    public void setPDFDocument(PDFDocument pdf) {
+        this.pdf = pdf;
+    }
+
+    public PDFDocument getPDFDocument() {
+        return pdf;
     }
 }

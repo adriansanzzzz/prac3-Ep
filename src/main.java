@@ -1,12 +1,11 @@
 import citizenmanagementplatform.UnifiedPlatform;
+import citizenmanagementplatform.exceptions.IncompleteFormException;
 import data.Nif;
 import exceptions.*;
 import publicadministration.Citizen;
-import publicadministration.CreditCard;
 import services.exceptions.*;
 
 import java.io.IOException;
-import java.net.ConnectException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -99,7 +98,7 @@ public class main {
         System.out.println("Introduce tu NIF");
         String nif = scanner.next();
         Nif NIF = new Nif(nif);
-        System.out.println("--Introduce Valdate del Nif--");
+        System.out.println("Formulario: Introduce Valdate del Nif--");
         System.out.println("Introduce el dia");
         var day = scanner.next();
         System.out.println("Introduce el mes");
@@ -107,6 +106,8 @@ public class main {
         System.out.println("Introduce el año");
         var year = scanner.next();
         LocalDate dategood = LocalDate.of(2028, 12, 12);
+        platform.initialize_citz(NIF, dategood); //5
+        platform.generateandsetPIN();
         platform.enterNIFandPINobt(NIF, dategood); //5
         System.out.println("Introduce el código");
         var pin_code = scanner.next();
@@ -127,38 +128,21 @@ public class main {
         //var goal= scanner.next();
         var goal="WORKWITHMINORS";
         var goalfinal= new data.Goal(goal,"DESCP","4");
+        platform.setform(citizenfinal,goalfinal);
         platform.enterForm(citizenfinal,goalfinal); //7
         platform.realizePayment();
         showformulario_datos_tarjeta(nif); //7.1
 
     }
 
-    private static void showformulario_datos_tarjeta(Nif nif) throws WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, NotValidPaymentDataException, InsufficientBalanceException, ConnectException, WrongSmallCodeFormatException, WrongCreditCardNumberException, DigitalSignatureException {
-        System.out.println("Introduce el número de la tarjeta");
-        //var num = scanner.next();
-        var num="3333333333334321";
-        System.out.println("Introduce el titular");
-        var titular = scanner.next();
-        System.out.println("--Introduce la fecha de caducidad--");
-        System.out.println("Introduce el dia");
-        var day = scanner.nextInt();
-        System.out.println("Introduce el mes");
-        var month = scanner.nextInt();
-        System.out.println("Introduce el año");
-        var year = scanner.nextInt();
-        var expdate = LocalDate.of(year, month, day);
-        System.out.println("Introduce el código de seguridad");
-        var code = scanner.next();
-        var finalcode = new data.SmallCode(code);
-        var card = new CreditCard(nif, num, expdate, finalcode);
-        //    public CreditCard (Nif nif, String cNum, LocalDate d, SmallCode c) throws WrongCreditCardLengthException, WrongCreditCardExceptionFormat, WrongCreditCardDataException {
+    private static void showformulario_datos_tarjeta(Nif nif) throws WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, NotValidPaymentDataException, InsufficientBalanceException, IOException, WrongSmallCodeFormatException, WrongCreditCardNumberException, DigitalSignatureException, IncompleteFormException, WrongNifFormatException {
+        var card=platform.creditCardForm();
+        platform.setCreditCard(card);
         platform.enterCardData(card); //8
-        platform.realizePayment(); //9
         showCertificadoptions(nif); //9.1
-
     }
 
-    private static void showCertificadoptions(Nif nif) throws WrongCreditCardNumberException, DigitalSignatureException, ConnectException {
+    private static void showCertificadoptions(Nif nif) throws WrongCreditCardNumberException, DigitalSignatureException, IOException {
         System.out.println("1. Obtener certificado");
         switch (scanner.nextInt()) {
             case 1:
