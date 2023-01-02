@@ -1,5 +1,4 @@
 package citizenmanagementplatform;
-
 import citizenmanagementplatform.exceptions.*;
 import data.*;
 import data.exceptions.*;
@@ -254,9 +253,13 @@ public class UnifiedPlatform {
         System.out.println("Aviso: Se va a generar el certificado de antecedentes penales estandar.");
 
         jm = new JusticeMinistryClass();
-        pdf=jm.getCriminalRecordCertf(citz, go);
-        citz.setPDFDocument(pdf);
-        openDocument(citz.getPDFDocument().pdfgetPath());
+        try {
+            pdf=jm.getCriminalRecordCertf(citz, go);
+            citz.setPDFDocument(pdf);
+            openDocument(citz.getPDFDocument().pdfgetPath());
+        } catch (IOException e) {
+            throw new ConnectException("ERROR: No se ha podido generar el certificado.");
+        }
 
         System.out.println("Aviso: Se ha generado el certificado de antecedentes penales estandar.");
         System.out.println("1: Desea Mover.");

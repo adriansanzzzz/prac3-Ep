@@ -49,6 +49,8 @@ public class UnifiedPlatformTest  {
     }
 
 
+
+
     @Test
     public void IncorrectValDateExceptionTest() throws WrongNifFormatException {
         var baddate = LocalDate.of(1999, 1, 1);
@@ -191,10 +193,8 @@ public class UnifiedPlatformTest  {
                     unifiedPlatform.enterPIN(new SmallCode("123"));
                 });
 
-
-
-
     }
+
 }
 
 

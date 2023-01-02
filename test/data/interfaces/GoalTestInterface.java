@@ -25,17 +25,17 @@ public interface GoalTestInterface {
     @Test
     default void wrongtypeGoalTest(){
         assertThrows(WrongGoalTypeException.class,
-                () -> new Goal("WRONGTYPE","test","3"));
+                () -> new Goal("WRONGTYPE", "citizenmanagementplatform","3"));
     }
     @Test
     //wrong priority not in range
     default void wrongPriorityGoalTest(){
         assertThrows(IllegalArgumentException.class,
-                () -> new Goal("WORKWITHMINORS","test","20"));
+                () -> new Goal("WORKWITHMINORS", "citizenmanagementplatform","20"));
         assertThrows(IllegalArgumentException.class,
-                () -> new Goal("WORKWITHMINORS","test","0"));
+                () -> new Goal("WORKWITHMINORS", "citizenmanagementplatform","0"));
         assertThrows(IllegalArgumentException.class,
-                () -> new Goal("WORKWITHMINORS","test","-5"));
+                () -> new Goal("WORKWITHMINORS", "citizenmanagementplatform","-5"));
     }
     }
 
