@@ -41,6 +41,9 @@ public class CertificationAuthorityClass implements services.interfaces.Certific
             throw new NotValidCredException("Password not valid");
         if (!citizen.getNif().equals(nif))
             throw new services.exceptions.NifNotRegisteredException("NIF not registered");
+        if (!citizen.hasMobile()){
+            throw new services.exceptions.AnyMobileRegisteredException("No mobile registered");
+        }
         if(citizen.permanentpin()) return 2;
 
         return 1;

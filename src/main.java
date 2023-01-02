@@ -104,15 +104,17 @@ public class main {
         Nif NIF = new Nif(nif);
         System.out.println("Introduce password");
         Password password = new Password(scanner.next());
-        System.out.println("Formulario: Introduce Valdate del Nif--");
+        System.out.println("Formulario: Introduce Valdate del Nif");
         System.out.println("Introduce el dia");
         var day = scanner.next();
         System.out.println("Introduce el mes");
         var month = scanner.next();
         System.out.println("Introduce el año");
         var year = scanner.next();
+        System.out.println("Formulario: Introduce el numero telfono movil ");
+        var mobile = scanner.next();
         LocalDate dategood = LocalDate.of(2028, 12, 12);
-        platform.initialize_citz(NIF, dategood,password); //5
+        platform.initialize_citz(NIF, dategood,mobile,password); //5
         platform.enterCred(NIF,password);
         platform.generateandsetPIN();
         platform.enterNIFandPINobt(NIF, dategood); //5
@@ -137,7 +139,9 @@ public class main {
         System.out.println("Introduce el año");
         var year = scanner.next();
         LocalDate dategood = LocalDate.of(2028, 12, 12);
-        platform.initialize_citz(NIF, dategood); //5
+        System.out.println("Formulario: Introduce el numero telfono movil ");
+        var mobile = scanner.next();
+        platform.initialize_citz(NIF, dategood,mobile); //5
         platform.generateandsetPIN();
         platform.enterNIFandPINobt(NIF, dategood); //5
         System.out.println("Introduce el código");

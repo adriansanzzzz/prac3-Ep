@@ -22,7 +22,6 @@ public class GoalTest implements GoalTestInterface {
     public void getGoalTest() {
         String name = "WORKWITHMINORS";
         String description = "aims to promote inclusive and sustainable economic growth, full and productive employment and decent work for all.";
-        String priority = "3";
         assertEquals(name, goal.getType());
         var prio = Integer.parseInt("3");
         assertEquals(description, goal.getDescription());

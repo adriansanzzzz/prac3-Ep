@@ -25,15 +25,16 @@ public class UnifiedPlatformTest implements UnifiedPlatformTestInterface {
 
 
     @BeforeEach
-    void setUp() throws WrongNifFormatException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat, WrongSmallCodeFormatException, WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, NotValidPaymentDataException, IncompleteFormException, InsufficientBalanceException, ConnectException, ProceduralException {
+    public void setUp() throws WrongNifFormatException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat, WrongSmallCodeFormatException, WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, NotValidPaymentDataException, IncompleteFormException, InsufficientBalanceException, ConnectException, ProceduralException {
         unifiedPlatform = new UnifiedPlatform();
         unifiedPlatform.dissable_procedures();
         citizen = new Citizen();
         var correctnif = new Nif("12345678A");
         var correctvalD = LocalDate.of(2025, 12, 12);
+        var correctmobile = "666666666";
 
 
-        unifiedPlatform.initialize_citz(correctnif, correctvalD);
+        unifiedPlatform.initialize_citz(correctnif, correctvalD, correctmobile);
         unifiedPlatform.set_pin(new SmallCode("123"));
 
 

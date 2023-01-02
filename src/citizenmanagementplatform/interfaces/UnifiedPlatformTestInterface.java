@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import services.exceptions.NotValidPINException;
 
 public interface UnifiedPlatformTestInterface {
+
     @Test
     void NifNotRegisteredException();
     @Test
@@ -25,4 +26,11 @@ public interface UnifiedPlatformTestInterface {
     @Test
     void DigitalSignatureExceptionTest();
 
-}
+
+    }
+
+
+
+
+
+

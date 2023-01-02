@@ -75,7 +75,7 @@ public class UnifiedPlatform {
             System.out.println("Aviso: Se ha seleccionado el metodo de identificacion: Cl@ve Permanente");
         }
     }
-    public void initialize_citz(Nif nif, LocalDate valDate)  {
+    public void initialize_citz(Nif nif, LocalDate valDate, String mobile)  {
         //AUXILIAR METHOD
         citz = new Citizen();
         ca = new CertificationAuthorityClass(citz);
@@ -83,13 +83,14 @@ public class UnifiedPlatform {
         citz.setValidationDate(valDate);
 
     }
-    public void initialize_citz(Nif nif, LocalDate valDate, Password pass)  {
+    public void initialize_citz(Nif nif, LocalDate valDate, String mobile, Password pass)  {
         //AUXILIAR METHOD
         citz = new Citizen();
         ca = new CertificationAuthorityClass(citz);
         citz.setNif(nif);
         citz.setValidationDate(valDate);
         citz.setPassword(pass);
+        citz.setMobileNumb(mobile);
     }
     public  void enterNIFandPINobt(Nif nif, LocalDate valDate) throws ConnectException, IncorrectValDateException, WrongNifFormatException, AnyMobileRegisteredException, NifNotRegisteredException, WrongSmallCodeFormatException, NotValidPINException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat, ProceduralException {
         enternifnobt = true;
@@ -124,11 +125,21 @@ public class UnifiedPlatform {
         citz.setName(citizen.getName());
         citz.setGoal(goal);
         citz.setAddress(citizen.getAddress());
-        citz.setMobileNumb(citizen.getMobileNumb());
         go.setType(goal.getType());
         go.setPriority(goal.getPriority());
         go.setDescription(goal.getDescription());
 
+    }
+    public void enterCred(Nif nif, Password passwd) throws NifNotRegisteredException, NotValidCredException, AnyMobileRegisteredException, ConnectException {
+
+        int res = ca.ckeckCredent(nif, passwd);
+        switch (res) {
+            case 0 -> throw new NifNotRegisteredException("El ciudadano no esta registrado en el sistema");
+            case 1 -> System.out.println("Los datos introducidos no son correctos");
+
+            case 2 -> System.out.println("Datos correctos");
+
+        }
     }
     public  void enterForm (Citizen citizen, Goal goal) throws IncorrectVerificationException, ConnectException, IncompleteFormException, ProceduralException {
         enterform = true;
@@ -222,16 +233,7 @@ public class UnifiedPlatform {
     }
 
 
-    public void enterCred(Nif nif, Password passwd) throws NifNotRegisteredException, NotValidCredException, AnyMobileRegisteredException, ConnectException {
-        int res = ca.ckeckCredent(nif, passwd);
-        switch (res) {
-            case 0 -> throw new NifNotRegisteredException("El ciudadano no esta registrado en el sistema");
-            case 1 -> System.out.println("Los datos introducidos no son correctos");
 
-            case 2 -> System.out.println("Datos correctos");
-
-        }
-    }
 
     public void openDocument(DocPath path) throws BadPathException {
         try {
