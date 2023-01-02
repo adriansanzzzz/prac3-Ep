@@ -107,14 +107,14 @@ public class main {
         Password password = new Password(scanner.next());
         System.out.println("Formulario: Introduce Valdate del Nif:");
         System.out.println("Introduce el dia");
-        var day = scanner.next();
+        var day = scanner.nextInt();
         System.out.println("Introduce el mes");
-        var month = scanner.next();
+        var month = scanner.nextInt();
         System.out.println("Introduce el año");
-        var year = scanner.next();
+        var year = scanner.nextInt();
         System.out.println("Formulario: Introduce el número telefono móvil: ");
         var mobile = scanner.next();
-        LocalDate dategood = LocalDate.of(2028, 12, 12);
+        LocalDate dategood = LocalDate.of(year, month, day);
         platform.initialize_citz(NIF, dategood,mobile,password); //5
         platform.enterCred(NIF,password);
         platform.generateandsetPIN();
@@ -134,12 +134,12 @@ public class main {
         Nif NIF = new Nif(nif);
         System.out.println("Formulario: Introduce Valdate del Nif");
         System.out.println("Introduce el dia");
-        var day = scanner.next();
+        var day = scanner.nextInt();
         System.out.println("Introduce el mes");
-        var month = scanner.next();
+        var month = scanner.nextInt();
         System.out.println("Introduce el año");
-        var year = scanner.next();
-        LocalDate dategood = LocalDate.of(2028, 12, 12);
+        var year = scanner.nextInt();
+        LocalDate dategood = LocalDate.of(year, month, day);
         System.out.println("Introduce el numero telfono movil ");
         var mobile = scanner.next();
         platform.initialize_citz(NIF, dategood,mobile); //5
@@ -152,7 +152,7 @@ public class main {
         showformularioDGP(NIF,mobile); //6.1
     }
 
-    private static void showformularioDGP(Nif nif, String movil) throws WrongNifFormatException, IncorrectValDateException, NifNotRegisteredException, AnyMobileRegisteredException, IOException, WrongSmallCodeFormatException, NotValidPINException, DigitalSignatureException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat, WrongCreditCardNumberException, WrongGoalTypeException, IncompleteFormException, IncorrectVerificationException, WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, NotValidPaymentDataException, InsufficientBalanceException, BadPathException, ProceduralException {
+    private static void showformularioDGP(Nif nif, String movil) throws WrongNifFormatException, IOException, WrongSmallCodeFormatException, NotValidPINException, DigitalSignatureException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat, WrongCreditCardNumberException, WrongGoalTypeException, IncompleteFormException, IncorrectVerificationException, WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, NotValidPaymentDataException, InsufficientBalanceException, BadPathException, ProceduralException {
         System.out.println("Introduce tu nombre");
         var name = scanner.next();
         System.out.println("Introduce tu add");
