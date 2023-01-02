@@ -1,9 +1,6 @@
 package citizenmanagementplatform;
 
-import citizenmanagementplatform.exceptions.BadPathException;
-import citizenmanagementplatform.exceptions.DigitalSignatureException;
-import citizenmanagementplatform.exceptions.IncompleteFormException;
-import citizenmanagementplatform.exceptions.NotValidCredException;
+import citizenmanagementplatform.exceptions.*;
 import data.*;
 import exceptions.*;
 import publicadministration.Citizen;
@@ -41,11 +38,13 @@ public class UnifiedPlatform {
     boolean selectProcedures = false;
     boolean selectCriminalReportCertf = false;
     boolean selectAuthMethod = false;
-    boolean enterForm = false;
-    boolean selectCreditCard = false;
-    boolean enterCreditCard = false;
-    boolean enterDigitalSignature = false;
-    boolean selectPaymentMethod = false;
+    boolean enternifnobt = false;
+    boolean enterpin = false;
+    boolean enterform = false;
+    boolean realizepayment = false;
+    boolean entercreditcarddata = false;
+    boolean obtaincertf = false;
+    boolean printcertf = false;
 
 
     static BigDecimal import_of_pay= new BigDecimal("3.86");
@@ -54,22 +53,29 @@ public class UnifiedPlatform {
 
 
     public  void selectJusMin() {
+        selectJusMin = true;
         System.out.println("Aviso: Se ha seleccionado Ministerio de Justicia.");
     }
-    public  void selectProcedures() {
+    public  void selectProcedures() throws ProceduralException {
+        selectProcedures = true;
+        if(!selectJusMin) throw new ProceduralException("No se ha seleccionado Ministerio de Justicia");
         System.out.println("Aviso: Se ha seleccionado Tramites..");
     }
-    public  void selectCriminalReportCertf() {
+    public  void selectCriminalReportCertf() throws ProceduralException {
+        selectCriminalReportCertf = true;
+        if(!selectJusMin || !selectProcedures) throw new ProceduralException("No se ha seleccionado Ministerio de Justicia o Tramites");
         System.out.println("Aviso: Se ha seleccionado el trámite: Obtener el certificado de antecedentes penales..");
     }
-    public  void selectAuthMethod(byte opc) {
+    public  void selectAuthMethod(byte opc) throws ProceduralException {
+        selectAuthMethod = true;
+        if(!selectJusMin || !selectProcedures || !selectCriminalReportCertf) throw new ProceduralException("No se ha seleccionado Ministerio de Justicia o Tramites o Obtener el certificado de antecedentes penales");
         if(opc == 1){
             System.out.println("Aviso: Se ha seleccionado el metodo de identificacion: Cl@ve PIN");
         }else if(opc == 2){
             System.out.println("Aviso: Se ha seleccionado el metodo de identificacion: Cl@ve Permanente");
         }
     }
-    public void initialize_citz(Nif nif, LocalDate valDate){
+    public void initialize_citz(Nif nif, LocalDate valDate)  {
         //AUXILIAR METHOD
         citz = new Citizen();
         ca = new CertificationAuthorityClass(citz);
@@ -77,7 +83,7 @@ public class UnifiedPlatform {
         citz.setValidationDate(valDate);
 
     }
-    public void initialize_citz(Nif nif, LocalDate valDate, Password pass){
+    public void initialize_citz(Nif nif, LocalDate valDate, Password pass)  {
         //AUXILIAR METHOD
         citz = new Citizen();
         ca = new CertificationAuthorityClass(citz);
@@ -85,29 +91,26 @@ public class UnifiedPlatform {
         citz.setValidationDate(valDate);
         citz.setPassword(pass);
     }
-    public  void enterNIFandPINobt(Nif nif, LocalDate valDate) throws ConnectException, IncorrectValDateException, WrongNifFormatException, AnyMobileRegisteredException, NifNotRegisteredException, WrongSmallCodeFormatException, NotValidPINException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat {
-
+    public  void enterNIFandPINobt(Nif nif, LocalDate valDate) throws ConnectException, IncorrectValDateException, WrongNifFormatException, AnyMobileRegisteredException, NifNotRegisteredException, WrongSmallCodeFormatException, NotValidPINException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat, ProceduralException {
+        enternifnobt = true;
+        if(!selectJusMin || !selectProcedures || !selectCriminalReportCertf || !selectAuthMethod ) throw new ProceduralException("No se ha seleccionado Ministerio de Justicia o Tramites o Obtener el certificado de antecedentes penales o metodo de identificacion");
         if(ca.sendPIN(nif, valDate)) {
             System.out.println("Aviso: ENVIADO!! el PIN al usuario con DNI -> " + citz.getNif());
         }
     }
-    public void generateandsetPIN() throws WrongSmallCodeFormatException {
+    public void generateandsetPIN() throws WrongSmallCodeFormatException, ProceduralException {
         //AUXILIAR METHOD
         //return a random 3 digit number
         int PIN = (int) (Math.random() * 900) + 100;
         //return string value of integer
         var pin= new SmallCode(String.valueOf(PIN));
-        System.out.println("Aviso: PIN generado: " + pin);
+        System.out.println("Mensaje: PIN generado: " + PIN);
         citz.setPin(pin);
 
     }
-
-    public void set_pin(SmallCode pin) {
-        //FOR TESTING PURPOSES
-        citz.setPin(pin);
-    }
-    public void enterPIN (SmallCode pin) throws NotValidPINException, IOException, DigitalSignatureException, WrongCreditCardNumberException {
-
+    public void enterPIN (SmallCode pin) throws NotValidPINException, IOException, DigitalSignatureException, WrongCreditCardNumberException, ProceduralException {
+        enterpin = true;
+        if(!selectJusMin || !selectProcedures || !selectCriminalReportCertf || !selectAuthMethod || !enternifnobt) throw new ProceduralException("No se ha seleccionado Ministerio de Justicia o Tramites o Obtener el certificado de antecedentes penales o metodo de identificacion o DNI y fecha de nacimiento o PIN");
         if (ca.checkPIN(this.citz.getNif(), pin)) {
             System.out.println("Aviso: El PIN introducido es correcto!!");
             System.out.println("Se procede a mostrar el certificado de antecedentes penales.");
@@ -115,7 +118,7 @@ public class UnifiedPlatform {
             throw new NotValidPINException("El PIN introducido no es correcto y no se corresponde con el generado por el sistema previamente. Se indica al usuario que podria no estar vigente.");
         }
     }
-    public void set_formdata(Citizen citizen, Goal goal){
+    public void set_formdata(Citizen citizen, Goal goal) throws NotValidPINException, ProceduralException {
         //AUXILIAR METHOD
         go=new Goal();
         citz.setName(citizen.getName());
@@ -127,8 +130,9 @@ public class UnifiedPlatform {
         go.setDescription(goal.getDescription());
 
     }
-    public  void enterForm (Citizen citizen, Goal goal) throws IncorrectVerificationException, ConnectException, IncompleteFormException {
-
+    public  void enterForm (Citizen citizen, Goal goal) throws IncorrectVerificationException, ConnectException, IncompleteFormException, ProceduralException {
+        enterform = true;
+        if(!selectJusMin || !selectProcedures || !selectCriminalReportCertf || !selectAuthMethod  || !enternifnobt  || !enterpin) throw new ProceduralException("No se ha seleccionado Ministerio de Justicia o Tramites o Obtener el certificado de antecedentes penales o metodo de identificacion o DNI y fecha de nacimiento o PIN");
         if (citz == null || goal == null) {
             throw new IncompleteFormException("El usuario no existe en el sistema.");
         }
@@ -148,12 +152,14 @@ public class UnifiedPlatform {
             throw new ConnectException("ERROR: No se ha podido conectar el usuario.");
         }
     }
-
-    public void realizePayment() {
+    public void realizePayment() throws ProceduralException {
+        realizepayment = true;
+        if (!selectJusMin || !selectProcedures || !selectCriminalReportCertf || !selectAuthMethod  || !enternifnobt  || !enterpin  || !enterform) throw new ProceduralException("No se ha seleccionado Ministerio de Justicia o Tramites o Obtener el certificado de antecedentes penales o metodo de identificacion o DNI y fecha de nacimiento o PIN o datos del formulario o formulario");
         System.out.println("Aviso: Se ha registrado el pago del certificado de antecedentes penales. ");
 
     }
-    public void set_creditcard_data(CreditCard creditCard) {
+    public void set_creditcard_data(CreditCard creditCard) throws ProceduralException {
+
         //AUXILIAR METHOD
         cc=creditCard;
         cc.setCardNumb(creditCard.getCardNumb());
@@ -191,7 +197,8 @@ public class UnifiedPlatform {
     }
 
     public void enterCardData(CreditCard cardD) throws ConnectException, NotValidPaymentDataException, InsufficientBalanceException, IncompleteFormException, WrongNifFormatException, WrongSmallCodeFormatException, WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat {
-
+        entercreditcarddata = true;
+        if (!selectJusMin || !selectProcedures || !selectCriminalReportCertf || !selectAuthMethod  || !enternifnobt  || !enterpin || !enterform || !realizepayment ) throw new IncompleteFormException("ERROR");
         if(import_of_pay.compareTo(cardD.getBalance())==1) { //if import_of_pay is greater than balance
             throw new InsufficientBalanceException("El usuario no tiene saldo suficiente para realizar el pago.");
         }
@@ -237,6 +244,8 @@ public class UnifiedPlatform {
 
 
     public void obtainCertificate () throws DigitalSignatureException, IOException, WrongCreditCardNumberException, BadPathException {
+        obtaincertf = true;
+        if (!selectJusMin || !selectProcedures || !selectCriminalReportCertf || !selectAuthMethod  || !enternifnobt  || !enterpin || !enterform || !realizepayment || !entercreditcarddata) throw new DigitalSignatureException("ERROR");
         System.out.println("Aviso: Se va a generar el certificado de antecedentes penales estandar.");
 
         jm = new JusticeMinistryClass();
@@ -260,10 +269,44 @@ public class UnifiedPlatform {
 
     }
 
-    public void printDocument () {
+    public void printDocument () throws DigitalSignatureException {
+        printcertf = true;
+        if (!selectJusMin || !selectProcedures || !selectCriminalReportCertf || !selectAuthMethod  || !enternifnobt  || !enterpin || !enterform || !realizepayment || !entercreditcarddata || !obtaincertf) throw new DigitalSignatureException("ERROR");
         System.out.println("Aviso: Se va a imprimir el certificado de antecedentes penales.");
     }
 
+    //-----------------------FOR TESTING PURPOSES----------------------
+
+    public void set_pin(SmallCode pin) {
+        citz.setPin(pin);
+    }
+    public void dissable_procedures() {
+        //FOR TESTING PURPOSES
+        selectJusMin = true;
+        selectProcedures = true;
+        selectCriminalReportCertf = true;
+        selectAuthMethod = true;
+        enternifnobt = true;
+        enterpin = true;
+        enterform = true;
+        realizepayment = true;
+        entercreditcarddata = true;
+        obtaincertf = true;
+        printcertf = true;
+    }
+    public void reset_procedures(){
+        selectJusMin = false;
+        selectProcedures = false;
+        selectCriminalReportCertf = false;
+        selectAuthMethod = false;
+        enternifnobt = false;
+        enterpin = false;
+        enterform = false;
+        realizepayment = false;
+        entercreditcarddata = false;
+        obtaincertf = false;
+        printcertf = false;
+    }
 
 
 

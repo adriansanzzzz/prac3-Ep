@@ -1,8 +1,5 @@
 import citizenmanagementplatform.UnifiedPlatform;
-import citizenmanagementplatform.exceptions.BadPathException;
-import citizenmanagementplatform.exceptions.DigitalSignatureException;
-import citizenmanagementplatform.exceptions.IncompleteFormException;
-import citizenmanagementplatform.exceptions.NotValidCredException;
+import citizenmanagementplatform.exceptions.*;
 import data.Nif;
 import data.Password;
 import exceptions.*;
@@ -19,7 +16,7 @@ public class main {
     static Integer option_auth=1;
 
 
-    public static void main(String[] args) throws IncompleteFormException, IncorrectVerificationException, IOException, NotValidPINException, IncorrectValDateException, WrongSmallCodeFormatException, NifNotRegisteredException, DigitalSignatureException, WrongNifFormatException, AnyMobileRegisteredException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat, WrongCreditCardNumberException, WrongGoalTypeException, WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, NotValidPaymentDataException, InsufficientBalanceException, NotValidCredException, WrongPasswordFormatException, BadPathException {
+    public static void main(String[] args) throws IncompleteFormException, IncorrectVerificationException, IOException, NotValidPINException, IncorrectValDateException, WrongSmallCodeFormatException, NifNotRegisteredException, DigitalSignatureException, WrongNifFormatException, AnyMobileRegisteredException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat, WrongCreditCardNumberException, WrongGoalTypeException, WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, NotValidPaymentDataException, InsufficientBalanceException, NotValidCredException, WrongPasswordFormatException, BadPathException, ProceduralException {
         System.out.println("Selecciona Ministerio al que quieres acceder");
         System.out.println("1. Justicia");
         System.out.println("2. Interior");
@@ -40,7 +37,7 @@ public class main {
 
 
     }
-    private static void showMinisteriodeJusticia() throws IncompleteFormException, IncorrectVerificationException, IOException, NotValidPINException, IncorrectValDateException, WrongSmallCodeFormatException, NifNotRegisteredException, DigitalSignatureException, WrongNifFormatException, AnyMobileRegisteredException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat, WrongCreditCardNumberException, WrongGoalTypeException, WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, NotValidPaymentDataException, InsufficientBalanceException, NotValidCredException, WrongPasswordFormatException, BadPathException {
+    private static void showMinisteriodeJusticia() throws IncompleteFormException, IncorrectVerificationException, IOException, NotValidPINException, IncorrectValDateException, WrongSmallCodeFormatException, NifNotRegisteredException, DigitalSignatureException, WrongNifFormatException, AnyMobileRegisteredException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat, WrongCreditCardNumberException, WrongGoalTypeException, WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, NotValidPaymentDataException, InsufficientBalanceException, NotValidCredException, WrongPasswordFormatException, BadPathException, ProceduralException {
         System.out.println("Ministerio de Justicia");
         System.out.println("1. Trámites");
         System.out.println("2. Información");
@@ -64,7 +61,7 @@ public class main {
         }
     }
 
-    private static void showTramites() throws IncompleteFormException, IncorrectVerificationException, IOException, NotValidPINException, IncorrectValDateException, WrongSmallCodeFormatException, NifNotRegisteredException, DigitalSignatureException, WrongNifFormatException, AnyMobileRegisteredException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat, WrongCreditCardNumberException, WrongGoalTypeException, WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, NotValidPaymentDataException, InsufficientBalanceException, NotValidCredException, WrongPasswordFormatException, BadPathException {
+    private static void showTramites() throws IncompleteFormException, IncorrectVerificationException, IOException, NotValidPINException, IncorrectValDateException, WrongSmallCodeFormatException, NifNotRegisteredException, DigitalSignatureException, WrongNifFormatException, AnyMobileRegisteredException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat, WrongCreditCardNumberException, WrongGoalTypeException, WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, NotValidPaymentDataException, InsufficientBalanceException, NotValidCredException, WrongPasswordFormatException, BadPathException, ProceduralException {
         System.out.println("Trámites");
         System.out.println("1. Obtener el certificado de antecedentes penales");
         switch (scanner.nextInt()) {
@@ -78,7 +75,7 @@ public class main {
                 break;
         }
     }
-    private static void showIdentificacionPossibilities() throws IncompleteFormException, IncorrectVerificationException, IOException, NotValidPINException, IncorrectValDateException, WrongSmallCodeFormatException, NifNotRegisteredException, DigitalSignatureException, WrongNifFormatException, AnyMobileRegisteredException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat, WrongCreditCardNumberException, WrongGoalTypeException, WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, NotValidPaymentDataException, InsufficientBalanceException, NotValidCredException, WrongPasswordFormatException, BadPathException {
+    private static void showIdentificacionPossibilities() throws IncompleteFormException, IncorrectVerificationException, IOException, NotValidPINException, IncorrectValDateException, WrongSmallCodeFormatException, NifNotRegisteredException, DigitalSignatureException, WrongNifFormatException, AnyMobileRegisteredException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat, WrongCreditCardNumberException, WrongGoalTypeException, WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, NotValidPaymentDataException, InsufficientBalanceException, NotValidCredException, WrongPasswordFormatException, BadPathException, ProceduralException {
         System.out.println("1. Cl@ve PIN");
         System.out.println("2. Cl@ve Permanente");
         switch (scanner.nextInt()) {
@@ -101,7 +98,7 @@ public class main {
                 break;
         }
     }
-    private static void showformulario_identificacion_clave_per() throws WrongNifFormatException, IncorrectValDateException, NifNotRegisteredException, AnyMobileRegisteredException, IOException, WrongSmallCodeFormatException, NotValidPINException, DigitalSignatureException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat, WrongCreditCardNumberException, IncompleteFormException, WrongGoalTypeException, IncorrectVerificationException, WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, NotValidPaymentDataException, InsufficientBalanceException, WrongPasswordFormatException, NotValidCredException, BadPathException {
+    private static void showformulario_identificacion_clave_per() throws WrongNifFormatException, IncorrectValDateException, NifNotRegisteredException, AnyMobileRegisteredException, IOException, WrongSmallCodeFormatException, NotValidPINException, DigitalSignatureException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat, WrongCreditCardNumberException, IncompleteFormException, WrongGoalTypeException, IncorrectVerificationException, WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, NotValidPaymentDataException, InsufficientBalanceException, WrongPasswordFormatException, NotValidCredException, BadPathException, ProceduralException {
         System.out.println("Introduce tu NIF");
         String nif = scanner.next();
         Nif NIF = new Nif(nif);
@@ -128,7 +125,7 @@ public class main {
 
 
 
-        private static void showformulario_identificacion() throws WrongNifFormatException, IncorrectValDateException, NifNotRegisteredException, AnyMobileRegisteredException, IOException, WrongSmallCodeFormatException, NotValidPINException, DigitalSignatureException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat, WrongCreditCardNumberException, IncompleteFormException, WrongGoalTypeException, IncorrectVerificationException, WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, NotValidPaymentDataException, InsufficientBalanceException, BadPathException {
+        private static void showformulario_identificacion() throws WrongNifFormatException, IncorrectValDateException, NifNotRegisteredException, AnyMobileRegisteredException, IOException, WrongSmallCodeFormatException, NotValidPINException, DigitalSignatureException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat, WrongCreditCardNumberException, IncompleteFormException, WrongGoalTypeException, IncorrectVerificationException, WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, NotValidPaymentDataException, InsufficientBalanceException, BadPathException, ProceduralException {
         System.out.println("Introduce tu NIF");
         String nif = scanner.next();
         Nif NIF = new Nif(nif);
@@ -150,7 +147,7 @@ public class main {
         showformularioDGP(NIF,dategood); //6.1
     }
 
-    private static void showformularioDGP(Nif nif, LocalDate date) throws WrongNifFormatException, IncorrectValDateException, NifNotRegisteredException, AnyMobileRegisteredException, IOException, WrongSmallCodeFormatException, NotValidPINException, DigitalSignatureException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat, WrongCreditCardNumberException, WrongGoalTypeException, IncompleteFormException, IncorrectVerificationException, WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, NotValidPaymentDataException, InsufficientBalanceException, BadPathException {
+    private static void showformularioDGP(Nif nif, LocalDate date) throws WrongNifFormatException, IncorrectValDateException, NifNotRegisteredException, AnyMobileRegisteredException, IOException, WrongSmallCodeFormatException, NotValidPINException, DigitalSignatureException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat, WrongCreditCardNumberException, WrongGoalTypeException, IncompleteFormException, IncorrectVerificationException, WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, NotValidPaymentDataException, InsufficientBalanceException, BadPathException, ProceduralException {
         System.out.println("Introduce tu nombre");
         var name = scanner.next();
         System.out.println("Introduce tu add");
@@ -169,7 +166,7 @@ public class main {
 
     }
 
-    private static void showformulario_datos_tarjeta(Nif nif) throws WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, NotValidPaymentDataException, InsufficientBalanceException, IOException, WrongSmallCodeFormatException, WrongCreditCardNumberException, DigitalSignatureException, IncompleteFormException, WrongNifFormatException, BadPathException {
+    private static void showformulario_datos_tarjeta(Nif nif) throws WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, NotValidPaymentDataException, InsufficientBalanceException, IOException, WrongSmallCodeFormatException, WrongCreditCardNumberException, DigitalSignatureException, IncompleteFormException, WrongNifFormatException, BadPathException, ProceduralException {
         var card=platform.creditcard_form();
         platform.set_creditcard_data(card);
         platform.enterCardData(card); //8
