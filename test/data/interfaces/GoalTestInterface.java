@@ -13,13 +13,13 @@ public interface GoalTestInterface {
     @Test
     default void getNullPointerGoalTest() {
         assertThrows(NullPointerException.class,
-                () -> new Goal(null,null,null)); //si pasamos path NULL,  nos da un NullPointerException
+                () -> new Goal(null,null,null));
 
     }
     @Test
     default void getEmptyGoalTest() {
         assertThrows(NullPointerException.class,
-                () -> new Goal("","","")); //si pasamos path vacio,  nos da un NullPointerException
+                () -> new Goal("","",""));
 
     }
     @Test

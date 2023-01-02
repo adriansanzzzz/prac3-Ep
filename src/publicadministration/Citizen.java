@@ -30,9 +30,6 @@ public class Citizen {
         this.address = add;
         this.mobileNumb = mobile;
         this.pdf = null;
-        this.pin = pin;
-        this.password = password;
-        this.goal = goal;
 
     }
 
@@ -88,6 +85,10 @@ public class Citizen {
         return address;
     }
 
+    public LocalDate getValidationDate() {
+        return valdate;
+    }
+
     //BOOLEAN THAT CHECKS IF THE CITIZEN HAVE A MOBILE NUMBER
     public boolean hasMobile() {
         return mobileNumb != null;
@@ -101,28 +102,10 @@ public class Citizen {
         this.pin = pin;
     }
 
-
     public void setValidationDate(LocalDate valDates) {
         this.valdate = valDates;
 
     }
-
-
-    public LocalDate getValidationDate() {
-        return valdate;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Citizen citizen = (Citizen) o;
-        return nif.equals(citizen.nif) &&
-                name.equals(citizen.name) &&
-                address.equals(citizen.address) &&
-                mobileNumb.equals(citizen.mobileNumb);
-    }
-
 
     public void setName(String nextLine) {
         this.name = nextLine;
@@ -141,10 +124,7 @@ public class Citizen {
         return nif.hashCode() + name.hashCode() + address.hashCode() + mobileNumb.hashCode();
     }
 
-    @Override
-    public String toString() {
-        return "Citizen: " + this.name + " " + this.address + " " + this.mobileNumb;
-    }
+
 
 
     public String getMobileNumb() {
@@ -174,12 +154,25 @@ public class Citizen {
 
     public boolean permanentpin() {
         return reinforcedPINActivated;
-
     }
-
 
     public void setGoal(Goal goal) {
         this.goal = goal;
 
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Citizen citizen = (Citizen) o;
+        return nif.equals(citizen.nif) &&
+                name.equals(citizen.name) &&
+                address.equals(citizen.address) &&
+                mobileNumb.equals(citizen.mobileNumb);
+    }
+
+    @Override
+    public String toString() {
+        return "Citizen: " + this.name + " " + this.address + " " + this.mobileNumb;
     }
 }

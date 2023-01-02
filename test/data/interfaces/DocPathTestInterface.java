@@ -13,6 +13,6 @@ public interface DocPathTestInterface {
     @Test
     default void getNullPointerDocPathTest() {
         assertThrows(NullPointerException.class,
-                () -> new DocPath(null)); //si pasamos path NULL,  nos da un NullPointerException
+                () -> new DocPath(null));
     }
 }

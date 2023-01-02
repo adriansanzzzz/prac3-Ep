@@ -151,9 +151,7 @@ public class UnifiedPlatformTestClavePin {
 
         assertThrows(
                 citizenmanagementplatform.exceptions.BadPathException.class,
-                () -> {
-                    unifiedPlatform.obtainCertificate();
-                });
+                () -> unifiedPlatform.obtainCertificate());
 
     }
 
@@ -169,14 +167,12 @@ public class UnifiedPlatformTestClavePin {
     }
 
     @Test
-    public void ProceduralExceptionTest() throws WrongNifFormatException, WrongGoalTypeException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat, NotValidPINException, ProceduralException {
+    public void ProceduralExceptionTest()  {
         unifiedPlatform.reset_procedures();
 
         assertThrows(
                 ProceduralException.class,
-                () -> {
-                    unifiedPlatform.selectProcedures();
-                });
+                () -> unifiedPlatform.selectProcedures());
 
         unifiedPlatform.reset_procedures();
 
