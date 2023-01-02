@@ -24,6 +24,7 @@ public class CertificationAuthorityClass implements services.interfaces.Certific
             throw new services.exceptions.NifNotRegisteredException("NIF not registered");
         if (!citizen.getValidationDate().equals(valD))
             throw new services.exceptions.IncorrectValDateException("Incorrect validation date");
+        if (!citizen.hasMobile())throw new services.exceptions.AnyMobileRegisteredException("No mobile registered");
         return true;
     }
 

@@ -1,6 +1,6 @@
 package data;
 
-import exceptions.WrongGoalTypeException;
+import data.exceptions.WrongGoalTypeException;
 
 public class Goal {
     private String type;

@@ -2,7 +2,7 @@ package publicadministration.interfaces;
 
 import data.Nif;
 import data.SmallCode;
-import exceptions.*;
+import data.exceptions.*;
 import org.junit.jupiter.api.Test;
 import publicadministration.CreditCard;
 

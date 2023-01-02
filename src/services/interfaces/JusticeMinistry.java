@@ -2,7 +2,7 @@ package services.interfaces;
 
 import data.Goal;
 import citizenmanagementplatform.exceptions.DigitalSignatureException;
-import exceptions.WrongCreditCardNumberException;
+import data.exceptions.WrongCreditCardNumberException;
 import publicadministration.Citizen;
 import publicadministration.CriminalRecordCertf;
 

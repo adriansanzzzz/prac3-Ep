@@ -2,11 +2,10 @@ package citizenmanagementplatform;
 
 import citizenmanagementplatform.exceptions.IncompleteFormException;
 import citizenmanagementplatform.exceptions.ProceduralException;
-import citizenmanagementplatform.interfaces.UnifiedPlatformTestInterface;
 import data.Goal;
 import data.Nif;
 import data.SmallCode;
-import exceptions.*;
+import data.exceptions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import publicadministration.Citizen;
@@ -19,7 +18,7 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class UnifiedPlatformTest implements UnifiedPlatformTestInterface {
+public class UnifiedPlatformTest  {
     UnifiedPlatform unifiedPlatform;
     Citizen citizen;
 
@@ -51,7 +50,7 @@ public class UnifiedPlatformTest implements UnifiedPlatformTestInterface {
 
 
     @Test
-    public void IncorrectValDateException() throws WrongNifFormatException {
+    public void IncorrectValDateExceptionTest() throws WrongNifFormatException {
         var baddate = LocalDate.of(1999, 1, 1);
 
         var correctnif = new Nif("12345678A");
@@ -59,6 +58,23 @@ public class UnifiedPlatformTest implements UnifiedPlatformTestInterface {
                 IncorrectValDateException.class,
                 () -> {
                     unifiedPlatform.enterNIFandPINobt(correctnif, baddate);
+                });
+
+
+    }
+
+    @Test
+    public void AnyMobileRegisteredExceptionTest() throws WrongNifFormatException, WrongSmallCodeFormatException {
+        var correctnif = new Nif("12345678A");
+        var correctvalD = LocalDate.of(2025, 12, 12);
+        var correctmobile = "666666666";
+        unifiedPlatform.initialize_citz(correctnif, correctvalD, null);
+        unifiedPlatform.set_pin(new SmallCode("123"));
+
+        assertThrows(
+                AnyMobileRegisteredException.class,
+                () -> {
+                    unifiedPlatform.enterNIFandPINobt(correctnif, correctvalD);
                 });
 
 

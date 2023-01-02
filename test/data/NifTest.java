@@ -1,6 +1,6 @@
 package data;
 
-import exceptions.WrongNifFormatException;
+import data.exceptions.WrongNifFormatException;
 import data.interfaces.NifTestInterface;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

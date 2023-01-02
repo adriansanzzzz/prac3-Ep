@@ -1,7 +1,7 @@
 package data;
 
 import data.interfaces.SmallCodeInterface;
-import exceptions.WrongSmallCodeFormatException;
+import data.exceptions.WrongSmallCodeFormatException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

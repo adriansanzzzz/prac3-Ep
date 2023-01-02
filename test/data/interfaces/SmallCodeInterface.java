@@ -1,7 +1,7 @@
 package data.interfaces;
 
 import data.SmallCode;
-import exceptions.WrongSmallCodeFormatException;
+import data.exceptions.WrongSmallCodeFormatException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

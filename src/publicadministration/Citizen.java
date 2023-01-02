@@ -4,8 +4,8 @@ import data.Goal;
 import data.Nif;
 import data.Password;
 import data.SmallCode;
-import exceptions.WrongCitizenMobileNumbFormat;
-import exceptions.WrongCitizenMobileNumblength;
+import data.exceptions.WrongCitizenMobileNumbFormat;
+import data.exceptions.WrongCitizenMobileNumblength;
 
 import java.time.LocalDate;
 

@@ -1,5 +1,5 @@
 package data;
-import exceptions.WrongSmallCodeFormatException;
+import data.exceptions.WrongSmallCodeFormatException;
 
 public class SmallCode {
     private final String smallCode;

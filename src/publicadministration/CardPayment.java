@@ -1,7 +1,8 @@
 package publicadministration;
 
 import data.Nif;
-import exceptions.*;
+import data.exceptions.ImportnegativePayamentException;
+import data.exceptions.NullCardPayamentException;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

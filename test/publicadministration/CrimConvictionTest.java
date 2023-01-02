@@ -1,6 +1,6 @@
 package publicadministration;
 
-import exceptions.CrimConvictionsDateException;
+import data.exceptions.CrimConvictionsDateException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import publicadministration.interfaces.CrimConvintionTestInterface;

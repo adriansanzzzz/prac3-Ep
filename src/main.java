@@ -2,7 +2,7 @@ import citizenmanagementplatform.UnifiedPlatform;
 import citizenmanagementplatform.exceptions.*;
 import data.Nif;
 import data.Password;
-import exceptions.*;
+import data.exceptions.*;
 import publicadministration.Citizen;
 import services.exceptions.*;
 

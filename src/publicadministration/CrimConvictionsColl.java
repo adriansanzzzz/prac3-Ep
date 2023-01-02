@@ -1,7 +1,7 @@
 package publicadministration;
 
-import exceptions.RepeatedCrimConvictionException;
-import exceptions.WrongDateFormatException;
+import data.exceptions.RepeatedCrimConvictionException;
+import data.exceptions.WrongDateFormatException;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

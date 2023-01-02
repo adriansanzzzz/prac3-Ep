@@ -1,9 +1,9 @@
 package publicadministration;
 
 import data.Nif;
-import exceptions.WrongCitizenMobileNumbFormat;
-import exceptions.WrongCitizenMobileNumblength;
-import exceptions.WrongNifFormatException;
+import data.exceptions.WrongCitizenMobileNumbFormat;
+import data.exceptions.WrongCitizenMobileNumblength;
+import data.exceptions.WrongNifFormatException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import publicadministration.interfaces.CitizienTestInterface;

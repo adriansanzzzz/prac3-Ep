@@ -4,7 +4,7 @@ import data.Nif;
 import data.Password;
 import data.SmallCode;
 import citizenmanagementplatform.exceptions.NotValidCredException;
-import exceptions.WrongNifFormatException;
+import data.exceptions.WrongNifFormatException;
 import services.exceptions.AnyMobileRegisteredException;
 import services.exceptions.IncorrectValDateException;
 import services.exceptions.NifNotRegisteredException;

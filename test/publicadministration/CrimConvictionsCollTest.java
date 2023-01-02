@@ -1,8 +1,8 @@
 package publicadministration;
 
-import exceptions.CrimConvictionsDateException;
-import exceptions.RepeatedCrimConvictionException;
-import exceptions.WrongDateFormatException;
+import data.exceptions.CrimConvictionsDateException;
+import data.exceptions.RepeatedCrimConvictionException;
+import data.exceptions.WrongDateFormatException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import publicadministration.interfaces.CrimConvictionsCollTestInterface;

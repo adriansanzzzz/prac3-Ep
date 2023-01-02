@@ -2,7 +2,7 @@ package citizenmanagementplatform;
 
 import citizenmanagementplatform.exceptions.*;
 import data.*;
-import exceptions.*;
+import data.exceptions.*;
 import publicadministration.Citizen;
 import publicadministration.CreditCard;
 import publicadministration.PDFDocument;
@@ -98,6 +98,9 @@ public class UnifiedPlatform {
         if(ca.sendPIN(nif, valDate)) {
             System.out.println("Aviso: ENVIADO!! el PIN al usuario con DNI -> " + citz.getNif());
         }
+        else {
+            throw new ConnectException("No se ha podido enviar el PIN al usuario con DNI -> " + citz.getNif());
+        }
     }
     public void generateandsetPIN() throws WrongSmallCodeFormatException, ProceduralException {
         //AUXILIAR METHOD
@@ -116,7 +119,7 @@ public class UnifiedPlatform {
             System.out.println("Aviso: El PIN introducido es correcto!!");
             System.out.println("Se procede a mostrar el certificado de antecedentes penales.");
         } else {
-            throw new NotValidPINException("El PIN introducido no es correcto y no se corresponde con el generado por el sistema previamente. Se indica al usuario que podria no estar vigente.");
+            throw new ConnectException("ERROR: No se ha podido conectar el usuario.");
         }
     }
     public void set_formdata(Citizen citizen, Goal goal) throws NotValidPINException, ProceduralException {

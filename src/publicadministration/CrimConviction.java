@@ -1,6 +1,6 @@
 package publicadministration;
 
-import exceptions.CrimConvictionsDateException;
+import data.exceptions.CrimConvictionsDateException;
 
 import java.time.LocalDate;
 import java.util.Objects;

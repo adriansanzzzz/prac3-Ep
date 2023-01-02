@@ -1,8 +1,8 @@
 package publicadministration.interfaces;
 
 import data.Nif;
-import exceptions.ImportnegativePayamentException;
-import exceptions.WrongNifFormatException;
+import data.exceptions.ImportnegativePayamentException;
+import data.exceptions.WrongNifFormatException;
 import org.junit.jupiter.api.Test;
 import publicadministration.CardPayment;
 
