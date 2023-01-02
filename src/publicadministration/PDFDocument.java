@@ -48,6 +48,7 @@ public class PDFDocument   { // Represents a PDF document
 
     public void openDoc(DocPath path) throws IOException {
         if (!new File(path.getDocPath()).exists()) throw new IOException("El documento en el path no existe.");
+        if(!Desktop.isDesktopSupported()) throw new IOException("No se puede abrir el documento.");
         File file = new File(path.getDocPath());
         Desktop.getDesktop().open(file);
     }

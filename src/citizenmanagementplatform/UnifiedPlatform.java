@@ -1,11 +1,10 @@
 package citizenmanagementplatform;
 
+import citizenmanagementplatform.exceptions.BadPathException;
+import citizenmanagementplatform.exceptions.DigitalSignatureException;
 import citizenmanagementplatform.exceptions.IncompleteFormException;
 import citizenmanagementplatform.exceptions.NotValidCredException;
-import data.Goal;
-import data.Nif;
-import data.Password;
-import data.SmallCode;
+import data.*;
 import exceptions.*;
 import publicadministration.Citizen;
 import publicadministration.CreditCard;
@@ -37,11 +36,18 @@ public class UnifiedPlatform {
     CreditCard cc;
     PDFDocument pdf;
 
-    //boolean for each step
-    boolean selecjustmin = false;
-    boolean selecprocedures = false;
-    boolean seleccriminalreportcerf = false;
-    boolean selecauthmethod = false;
+    //boolean for each function
+    boolean selectJusMin = false;
+    boolean selectProcedures = false;
+    boolean selectCriminalReportCertf = false;
+    boolean selectAuthMethod = false;
+    boolean enterForm = false;
+    boolean selectCreditCard = false;
+    boolean enterCreditCard = false;
+    boolean enterDigitalSignature = false;
+    boolean selectPaymentMethod = false;
+
+
     static BigDecimal import_of_pay= new BigDecimal("3.86");
     static LocalDate datenow = LocalDate.now();
     static String ntrans = random_number();
@@ -57,8 +63,6 @@ public class UnifiedPlatform {
     public  void selectCriminalReportCertf() {
         System.out.println("Aviso: Se ha seleccionado el trámite: Obtener el certificado de antecedentes penales..");
     }
-
-
     public  void selectAuthMethod(byte opc) {
         if(opc == 1){
             System.out.println("Aviso: Se ha seleccionado el metodo de identificacion: Cl@ve PIN");
@@ -110,6 +114,7 @@ public class UnifiedPlatform {
     public void setform(Citizen citizen, Goal goal){
         go=new Goal();
         citz.setName(citizen.getName());
+        citz.setGoal(goal);
         citz.setAddress(citizen.getAddress());
         citz.setMobileNumb(citizen.getMobileNumb());
         go.setType(goal.getType());
@@ -213,13 +218,23 @@ public class UnifiedPlatform {
         }
     }
 
-    public void obtainCertificate () throws DigitalSignatureException, IOException, WrongCreditCardNumberException {
+    public void openDocument(DocPath path) throws BadPathException {
+        try {
+            pdf.openDoc(path);
+        } catch (IOException e) {
+            throw new BadPathException("El documento no se ha podido abrir.");
+        }
+    }
+
+
+
+    public void obtainCertificate () throws DigitalSignatureException, IOException, WrongCreditCardNumberException, BadPathException {
         System.out.println("Aviso: Se va a generar el certificado de antecedentes penales estandar.");
 
         jm = new JusticeMinistryClass();
-        var pdf=jm.getCriminalRecordCertf(citz, go);
+        pdf=jm.getCriminalRecordCertf(citz, go);
         citz.setPDFDocument(pdf);
-        pdf.openDoc(citz.getPDFDocument().pdfgetPath());
+        openDocument(citz.getPDFDocument().pdfgetPath());
 
         System.out.println("Aviso: Se ha generado el certificado de antecedentes penales estandar.");
         System.out.println("1: Desea Mover.");

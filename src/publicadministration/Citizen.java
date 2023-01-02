@@ -1,5 +1,6 @@
 package publicadministration;
 
+import data.Goal;
 import data.Nif;
 import data.Password;
 import data.SmallCode;
@@ -18,6 +19,7 @@ public class Citizen {
     private SmallCode pin;
     private PDFDocument pdf;
     Password password;
+    Goal goal;
     private boolean reinforcedPINActivated = false;
 
 
@@ -30,6 +32,7 @@ public class Citizen {
         this.pdf = null;
         this.pin = pin;
         this.password = password;
+        this.goal = goal;
 
     }
 
@@ -38,6 +41,10 @@ public class Citizen {
         this.name = name;
         this.address = address;
         this.mobileNumb = mobileNumb;
+        this.pdf = pdf;
+        this.pin = pin;
+        this.password = password;
+        this.goal = goal;
 
     }
     // the getters
@@ -167,6 +174,12 @@ public class Citizen {
 
     public boolean permanentpin() {
         return reinforcedPINActivated;
+
+    }
+
+
+    public void setGoal(Goal goal) {
+        this.goal = goal;
 
     }
 }

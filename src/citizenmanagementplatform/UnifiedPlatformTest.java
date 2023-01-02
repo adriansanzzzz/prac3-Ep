@@ -31,7 +31,6 @@ public class UnifiedPlatformTest {
         citizen = new Citizen();
         var correctnif = new Nif("12345678A");
         var correctvalD = LocalDate.of(2025, 12, 12);
-        var correctcreditcard = new CreditCard(correctnif,"3333333333334321",correctvalD,new data.SmallCode("123"));
 
 
         unifiedPlatform.initialize_citz(correctnif, correctvalD);
@@ -125,6 +124,35 @@ public class UnifiedPlatformTest {
                     unifiedPlatform.enterCardData(correctcreditcard);
                 });
     }
+
+    @Test
+    public void BadPathExceptionTest() throws WrongNifFormatException, WrongGoalTypeException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat {
+
+        var badgoal= new Goal("PUBLICWORKERS","desc","4");
+        var badcitz=new Citizen(new Nif("49266398R"),"Name","add","666666666");
+
+        unifiedPlatform.setform(badcitz,badgoal);
+
+
+        assertThrows(
+                citizenmanagementplatform.exceptions.BadPathException.class,
+                () -> {
+                    unifiedPlatform.obtainCertificate();
+                });
+
+    }
+    @Test
+    public void DigitalSignatureExceptionTest() throws WrongNifFormatException, WrongGoalTypeException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat {
+
+        assertThrows(
+                citizenmanagementplatform.exceptions.DigitalSignatureException.class,
+                () -> {
+                    unifiedPlatform.obtainCertificate();
+                });
+
+    }
+
+
 
 
 

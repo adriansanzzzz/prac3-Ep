@@ -1,7 +1,7 @@
 package services;
 
 import data.Goal;
-import exceptions.DigitalSignatureException;
+import citizenmanagementplatform.exceptions.DigitalSignatureException;
 import publicadministration.Citizen;
 import publicadministration.CriminalRecordCertf;
 
