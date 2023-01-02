@@ -34,7 +34,7 @@ public class UnifiedPlatformTest {
 
 
         unifiedPlatform.initialize_citz(correctnif, correctvalD);
-        unifiedPlatform.setpin(new SmallCode("123"));
+        unifiedPlatform.set_pin(new SmallCode("123"));
 
 
     }
@@ -102,7 +102,7 @@ public class UnifiedPlatformTest {
         var correctnif = new Nif("12545678A");
         var correctvalD = LocalDate.of(2026, 12, 12);
         var correctcred = new CreditCard(correctnif,"3333333333335321",correctvalD,new data.SmallCode("333"));
-        unifiedPlatform.setCreditCard(correctcred);
+        unifiedPlatform.set_creditcard_data(correctcred);
         var badcreditcard = new CreditCard(correctnif,"3333333333535324",correctvalD,new data.SmallCode("333"));
 
         assertThrows(
@@ -131,7 +131,7 @@ public class UnifiedPlatformTest {
         var badgoal= new Goal("PUBLICWORKERS","desc","4");
         var badcitz=new Citizen(new Nif("49266398R"),"Name","add","666666666");
 
-        unifiedPlatform.setform(badcitz,badgoal);
+        unifiedPlatform.set_formdata(badcitz,badgoal);
 
 
         assertThrows(

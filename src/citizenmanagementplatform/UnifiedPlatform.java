@@ -53,7 +53,6 @@ public class UnifiedPlatform {
     static String ntrans = random_number();
 
 
-
     public  void selectJusMin() {
         System.out.println("Aviso: Se ha seleccionado Ministerio de Justicia.");
     }
@@ -70,14 +69,16 @@ public class UnifiedPlatform {
             System.out.println("Aviso: Se ha seleccionado el metodo de identificacion: Cl@ve Permanente");
         }
     }
-    public void initialize_citz(Nif nif, LocalDate valDate){ //FOR TESTING PURPOSES
+    public void initialize_citz(Nif nif, LocalDate valDate){
+        //AUXILIAR METHOD
         citz = new Citizen();
         ca = new CertificationAuthorityClass(citz);
         citz.setNif(nif);
         citz.setValidationDate(valDate);
 
     }
-    public void initialize_citz(Nif nif, LocalDate valDate, Password pass){ //FOR TESTING PURPOSES
+    public void initialize_citz(Nif nif, LocalDate valDate, Password pass){
+        //AUXILIAR METHOD
         citz = new Citizen();
         ca = new CertificationAuthorityClass(citz);
         citz.setNif(nif);
@@ -91,6 +92,7 @@ public class UnifiedPlatform {
         }
     }
     public void generateandsetPIN() throws WrongSmallCodeFormatException {
+        //AUXILIAR METHOD
         //return a random 3 digit number
         int PIN = (int) (Math.random() * 900) + 100;
         //return string value of integer
@@ -99,7 +101,9 @@ public class UnifiedPlatform {
         citz.setPin(pin);
 
     }
-    public void setpin(SmallCode pin) { //FOR TESTING PURPOSES
+
+    public void set_pin(SmallCode pin) {
+        //FOR TESTING PURPOSES
         citz.setPin(pin);
     }
     public void enterPIN (SmallCode pin) throws NotValidPINException, IOException, DigitalSignatureException, WrongCreditCardNumberException {
@@ -111,7 +115,8 @@ public class UnifiedPlatform {
             throw new NotValidPINException("El PIN introducido no es correcto y no se corresponde con el generado por el sistema previamente. Se indica al usuario que podria no estar vigente.");
         }
     }
-    public void setform(Citizen citizen, Goal goal){
+    public void set_formdata(Citizen citizen, Goal goal){
+        //AUXILIAR METHOD
         go=new Goal();
         citz.setName(citizen.getName());
         citz.setGoal(goal);
@@ -148,7 +153,8 @@ public class UnifiedPlatform {
         System.out.println("Aviso: Se ha registrado el pago del certificado de antecedentes penales. ");
 
     }
-    public void setCreditCard(CreditCard creditCard) {
+    public void set_creditcard_data(CreditCard creditCard) {
+        //AUXILIAR METHOD
         cc=creditCard;
         cc.setCardNumb(creditCard.getCardNumb());
         cc.setExpirDate(creditCard.getExpirDate());
@@ -158,7 +164,8 @@ public class UnifiedPlatform {
 
     }
 
-    public CreditCard creditCardForm() throws WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, WrongSmallCodeFormatException, WrongNifFormatException, IncompleteFormException {
+    public CreditCard creditcard_form() throws WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, WrongSmallCodeFormatException, WrongNifFormatException, IncompleteFormException {
+        //AUXILIAR METHOD
         System.out.println("Formulario: Introduce el Nif del titular de la tarjeta: ");
         var nif = new Nif(scanner.nextLine());
         System.out.println("Formulario: Introduce el número de la tarjeta");
@@ -184,8 +191,7 @@ public class UnifiedPlatform {
     }
 
     public void enterCardData(CreditCard cardD) throws ConnectException, NotValidPaymentDataException, InsufficientBalanceException, IncompleteFormException, WrongNifFormatException, WrongSmallCodeFormatException, WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat {
-        System.out.println(import_of_pay);
-        System.out.println(cardD.getBalance());
+
         if(import_of_pay.compareTo(cardD.getBalance())==1) { //if import_of_pay is greater than balance
             throw new InsufficientBalanceException("El usuario no tiene saldo suficiente para realizar el pago.");
         }
@@ -200,6 +206,8 @@ public class UnifiedPlatform {
 
     }
     private static String random_number() {
+        //AUXILIAR METHOD
+
         //return a random 3 digit number
         int PIN = (int) (Math.random() * 900) + 100;
         //return string value of integer
@@ -255,6 +263,7 @@ public class UnifiedPlatform {
     public void printDocument () {
         System.out.println("Aviso: Se va a imprimir el certificado de antecedentes penales.");
     }
+
 
 
 

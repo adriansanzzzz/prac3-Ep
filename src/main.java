@@ -162,7 +162,7 @@ public class main {
         //var goal= scanner.next();
         var goal="WORKWITHMINORS";
         var goalfinal= new data.Goal(goal,"DESCP","4");
-        platform.setform(citizenfinal,goalfinal);
+        platform.set_formdata(citizenfinal,goalfinal);
         platform.enterForm(citizenfinal,goalfinal); //7
         platform.realizePayment();
         showformulario_datos_tarjeta(nif); //7.1
@@ -170,8 +170,8 @@ public class main {
     }
 
     private static void showformulario_datos_tarjeta(Nif nif) throws WrongCreditCardLengthException, WrongCreditCardDataException, WrongCreditCardExceptionFormat, NotValidPaymentDataException, InsufficientBalanceException, IOException, WrongSmallCodeFormatException, WrongCreditCardNumberException, DigitalSignatureException, IncompleteFormException, WrongNifFormatException, BadPathException {
-        var card=platform.creditCardForm();
-        platform.setCreditCard(card);
+        var card=platform.creditcard_form();
+        platform.set_creditcard_data(card);
         platform.enterCardData(card); //8
         showCertificadoptions(nif); //9.1
     }
