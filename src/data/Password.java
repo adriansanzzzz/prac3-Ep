@@ -17,14 +17,17 @@ final public class Password {
     private void checkPassword(String pass) throws WrongPasswordFormatException {
         if (pass == null)
             throw new NullPointerException("El valor de la contraseña es null");
+        /*
         else if (pass.length() < 4)
             throw new WrongPasswordFormatException("La longitud de la contraseña no es la correcta");
-        else if (!passwordHasDigit(pass))
+        else if (passwordHasDigit(pass))
             throw new WrongPasswordFormatException("La contraseña no tiene dígitos");
-        else if (!passwordHasChar(pass))
+        else if (passwordHasChar(pass))
             throw new WrongPasswordFormatException("La contraseña no tiene caracteres");
-        else if (!passwordHasSpecialChar(pass))
-            throw new WrongPasswordFormatException("La contrasenya no tiene caracteres especiales");
+        else if (passwordHasSpecialChar(pass))
+            throw new WrongPasswordFormatException("La contraseña no tiene caracteres especiales");
+
+         */
     }
 
     private boolean passwordHasDigit(String pass) {

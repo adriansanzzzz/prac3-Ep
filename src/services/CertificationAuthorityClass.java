@@ -1,8 +1,8 @@
 package services;
 
+import citizenmanagementplatform.exceptions.NotValidCredException;
 import data.Nif;
 import data.Password;
-import citizenmanagementplatform.exceptions.NotValidCredException;
 import publicadministration.Citizen;
 import services.exceptions.AnyMobileRegisteredException;
 import services.exceptions.NifNotRegisteredException;
@@ -17,10 +17,13 @@ public class CertificationAuthorityClass implements services.interfaces.Certific
     public CertificationAuthorityClass(Citizen citizen) {
         this.citizen = citizen;
     }
+
     @Override
     public boolean sendPIN(Nif nif, LocalDate valD) throws services.exceptions.NifNotRegisteredException, AnyMobileRegisteredException, services.exceptions.IncorrectValDateException, ConnectException {
-        if(!citizen.getNif().equals(nif)) throw new services.exceptions.NifNotRegisteredException("NIF not registered");
-        if(!citizen.getValidationDate().equals(valD)) throw new services.exceptions.IncorrectValDateException("Incorrect validation date");
+        if (!citizen.getNif().equals(nif))
+            throw new services.exceptions.NifNotRegisteredException("NIF not registered");
+        if (!citizen.getValidationDate().equals(valD))
+            throw new services.exceptions.IncorrectValDateException("Incorrect validation date");
         return true;
     }
 
@@ -31,12 +34,15 @@ public class CertificationAuthorityClass implements services.interfaces.Certific
     }
 
     @Override
-    public byte ckeckCredent(Nif nif, Password passw) throws
-            NifNotRegisteredException, NotValidCredException,
-            AnyMobileRegisteredException, ConnectException {
-        return 0;
+    public byte ckeckCredent(Nif nif, Password password)
+            throws NotValidCredException, NifNotRegisteredException,
+            AnyMobileRegisteredException {
+        if (!citizen.getPassword().equals(password))
+            throw new NotValidCredException();
+        if (!citizen.getNif().equals(nif))
+            throw new services.exceptions.NifNotRegisteredException("NIF not registered");
+        if(citizen.permanentpin()) return 2;
+
+        return 1;
     }
-
-
 }
-

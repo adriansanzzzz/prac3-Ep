@@ -1,8 +1,10 @@
 package citizenmanagementplatform;
 
 import citizenmanagementplatform.exceptions.IncompleteFormException;
+import citizenmanagementplatform.exceptions.NotValidCredException;
 import data.Goal;
 import data.Nif;
+import data.Password;
 import data.SmallCode;
 import exceptions.*;
 import publicadministration.Citizen;
@@ -56,12 +58,12 @@ public class UnifiedPlatform {
         System.out.println("Aviso: Se ha seleccionado el trámite: Obtener el certificado de antecedentes penales..");
     }
 
+
     public  void selectAuthMethod(byte opc) {
-        if(opc==1) {
-            System.out.println("Aviso: Se ha seleccionado el método de identificación: Cl@ve PIN.");
-        }
-        else if(opc==2) {
-            System.out.println("Aviso: Se ha seleccionado el método de identificación: Cl@ve Permanente.");
+        if(opc == 1){
+            System.out.println("Aviso: Se ha seleccionado el metodo de identificacion: Cl@ve PIN");
+        }else if(opc == 2){
+            System.out.println("Aviso: Se ha seleccionado el metodo de identificacion: Cl@ve Permanente");
         }
     }
     public void initialize_citz(Nif nif, LocalDate valDate){ //FOR TESTING PURPOSES
@@ -70,6 +72,13 @@ public class UnifiedPlatform {
         citz.setNif(nif);
         citz.setValidationDate(valDate);
 
+    }
+    public void initialize_citz(Nif nif, LocalDate valDate, Password pass){ //FOR TESTING PURPOSES
+        citz = new Citizen();
+        ca = new CertificationAuthorityClass(citz);
+        citz.setNif(nif);
+        citz.setValidationDate(valDate);
+        citz.setPassword(pass);
     }
     public  void enterNIFandPINobt(Nif nif, LocalDate valDate) throws ConnectException, IncorrectValDateException, WrongNifFormatException, AnyMobileRegisteredException, NifNotRegisteredException, WrongSmallCodeFormatException, NotValidPINException, WrongCitizenMobileNumblength, WrongCitizenMobileNumbFormat {
 
@@ -193,6 +202,17 @@ public class UnifiedPlatform {
     }
 
 
+    public void enterCred(Nif nif, Password passwd) throws NifNotRegisteredException, NotValidCredException, AnyMobileRegisteredException, ConnectException {
+        int res = ca.ckeckCredent(nif, passwd);
+        switch (res) {
+            case 0 -> throw new NifNotRegisteredException("El ciudadano no esta registrado en el sistema");
+            case 1 -> System.out.println("Los datos introducidos no son correctos");
+
+            case 2 -> System.out.println("Datos correctos");
+
+        }
+    }
+
     public void obtainCertificate () throws DigitalSignatureException, IOException, WrongCreditCardNumberException {
         System.out.println("Aviso: Se va a generar el certificado de antecedentes penales estandar.");
 
@@ -219,10 +239,6 @@ public class UnifiedPlatform {
 
     public void printDocument () {
         System.out.println("Aviso: Se va a imprimir el certificado de antecedentes penales.");
-    }
-
-    public void setCitz(Citizen citz) {
-        this.citz = citz;
     }
 
 

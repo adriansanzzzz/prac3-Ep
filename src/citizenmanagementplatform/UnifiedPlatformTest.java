@@ -126,10 +126,7 @@ public class UnifiedPlatformTest {
                 });
     }
 
-    @Test
-    public void DigitalSignatureExceptionTest() {
 
-    }
 
 
 
